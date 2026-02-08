@@ -1,0 +1,49 @@
+================================================================================
+CONFIGURATION
+================================================================================
+  env_id                    = LunarLander-v3
+  seed                      = 42
+  gamma                     = 0.99
+  lr_policy                 = 0.0001
+  lr_value                  = 0.0005
+  entropy_coef              = 0.01
+  entropy_coef_decay        = 0.995
+  entropy_coef_min          = 0.001
+  value_coef                = 0.5
+  max_episodes              = 10000
+  eval_every                = 50
+  eval_episodes             = 10
+  hidden_size               = 256
+  grad_clip                 = 0.5
+  batch_episodes            = 4
+  save_dir                  = checkpoints
+  save_name                 = reinforce_maxEpisodes_10000_hiddenSize_256.pt
+  plot_name                 = reinforce_maxEpisodes_10000__hiddenSize_256.png
+  render_eval_human         = False
+  record_video              = False
+  video_dir                 = videos_record
+  solved_mean_reward        = 200.0
+  solved_window             = 100
+================================================================================
+
+
+============================================================
+Test de la politique sur 5 épisodes
+============================================================
+
+Politique chargée : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+
+Épisode  1/5 | Retour :  242.33 | Pas : 291
+Épisode  2/5 | Retour :  250.88 | Pas : 278
+Épisode  3/5 | Retour :  252.31 | Pas : 318
+Épisode  4/5 | Retour :  250.62 | Pas : 287
+Épisode  5/5 | Retour :  249.33 | Pas : 296
+
+============================================================
+Résultats :
+  Moyenne :  249.09 +/- 3.51
+  Min :      242.33
+  Max :      252.31
+  Succès :  5/5 (>= 200)
+============================================================
+
