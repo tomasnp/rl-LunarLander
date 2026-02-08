@@ -1,0 +1,424 @@
+================================================================================
+🚀 A2C with GAE - Lunar Lander Training
+================================================================================
+Rollout steps:      2048
+Max updates:        10000
+GAE lambda:         0.95
+Entropy annealing:  0.05 → 0.005
+Gradient clipping:  0.5
+================================================================================
+
+
+================================================================================
+⚙️  CONFIGURATION
+================================================================================
+  env_id                    = LunarLander-v3
+  seed                      = 42
+  gamma                     = 0.99
+  gae_lambda                = 0.95
+  lr_policy                 = 0.0005
+  lr_value                  = 0.001
+  entropy_coef_start        = 0.05
+  entropy_coef_final        = 0.005
+  value_coef                = 0.5
+  rollout_steps             = 2048
+  max_updates               = 10000
+  eval_every                = 50
+  eval_episodes             = 30
+  hidden_size               = 512
+  grad_clip                 = 0.5
+  normalize_obs             = True
+  reward_clip               = 10.0
+  weight_decay              = 1e-05
+  obs_clip                  = 10.0
+  save_dir                  = checkpoints
+  save_name                 = a2c_2048_10000.pt
+  render_eval_human         = False
+  record_video              = False
+  video_dir                 = videos_record
+  solved_mean_reward        = 200.0
+  solved_window             = 100
+================================================================================
+
+[INFO] Device: cpu
+[INFO] Training mode: A2C with GAE (rollout_steps=2048)
+[INFO] PyTorch version: 2.8.0
+[INFO] Gymnasium version: 1.2.3
+
+[INFO] Observation normalization: ENABLED (clip=10.0)
+[INFO] Reward clipping: ENABLED (clip=±10.0)
+
+Update   10 | return=    5.0 (n=139) | loss=3.496 | policy=-0.108 | value=7.207 | entropy=1.141 (coef=0.0500) | adv: μ=-0.000 σ=1.000
+Update   20 | return=   39.1 (n=186) | loss=2.139 | policy=-0.153 | value=4.584 | entropy=1.055 (coef=0.0499) | adv: μ=-0.000 σ=1.000
+Update   30 | return=   32.9 (n=210) | loss=1.831 | policy=-0.119 | value=3.900 | entropy=1.043 (coef=0.0499) | adv: μ=-0.000 σ=1.000
+Update   40 | return=   26.7 (n=233) | loss=1.472 | policy=-0.126 | value=3.196 | entropy=0.909 (coef=0.0498) | adv: μ=-0.000 σ=1.000
+Update   50 | return=   21.8 (n=255) | loss=1.443 | policy=-0.154 | value=3.193 | entropy=0.981 (coef=0.0498) | adv: μ=-0.000 σ=1.000
+[EVAL] Update   50 | avg_return over 30 eps = -51.1
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update   60 | return=   15.5 (n=283) | loss=0.901 | policy=-0.149 | value=2.100 | entropy=1.011 (coef=0.0497) | adv: μ=-0.000 σ=1.000
+Update   70 | return=   19.8 (n=306) | loss=1.189 | policy=-0.086 | value=2.552 | entropy=0.951 (coef=0.0496) | adv: μ=-0.000 σ=1.000
+Update   80 | return=   34.2 (n=331) | loss=0.811 | policy=-0.129 | value=1.879 | entropy=0.927 (coef=0.0496) | adv: μ=0.000 σ=1.000
+Update   90 | return=   35.7 (n=360) | loss=1.750 | policy=-0.084 | value=3.669 | entropy=0.883 (coef=0.0496) | adv: μ=-0.000 σ=1.000
+Update  100 | return=   44.9 (n=392) | loss=1.094 | policy=-0.076 | value=2.340 | entropy=0.718 (coef=0.0495) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=114.8 std=103.2 min=-81.1 max=246.1
+[EVAL] Update  100 | avg_return over 30 eps = 114.8
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update  110 | return=   46.2 (n=437) | loss=2.295 | policy=-0.007 | value=4.603 | entropy=0.959 (coef=0.0495) | adv: μ=0.000 σ=1.000
+Update  120 | return=   48.0 (n=476) | loss=1.327 | policy=-0.055 | value=2.764 | entropy=0.756 (coef=0.0494) | adv: μ=-0.000 σ=1.000
+Update  130 | return=   47.5 (n=515) | loss=1.207 | policy=-0.169 | value=2.751 | entropy=0.874 (coef=0.0494) | adv: μ=-0.000 σ=1.000
+Update  140 | return=   53.7 (n=551) | loss=1.065 | policy=-0.067 | value=2.264 | entropy=0.988 (coef=0.0493) | adv: μ=0.000 σ=1.000
+Update  150 | return=   61.8 (n=585) | loss=0.818 | policy=-0.066 | value=1.767 | entropy=1.046 (coef=0.0493) | adv: μ=0.000 σ=1.000
+[EVAL] Update  150 | avg_return over 30 eps = 55.1
+Update  160 | return=   65.2 (n=620) | loss=1.078 | policy=-0.052 | value=2.261 | entropy=0.944 (coef=0.0492) | adv: μ=0.000 σ=1.000
+Update  170 | return=   58.4 (n=670) | loss=0.729 | policy=-0.115 | value=1.689 | entropy=0.973 (coef=0.0491) | adv: μ=0.000 σ=1.000
+Update  180 | return=   45.9 (n=714) | loss=1.809 | policy=0.012 | value=3.595 | entropy=0.917 (coef=0.0491) | adv: μ=0.000 σ=1.000
+Update  190 | return=   52.0 (n=749) | loss=0.937 | policy=-0.020 | value=1.913 | entropy=0.875 (coef=0.0491) | adv: μ=0.000 σ=1.000
+Update  200 | return=   58.5 (n=775) | loss=0.779 | policy=-0.110 | value=1.778 | entropy=1.029 (coef=0.0490) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=125.1 std=141.2 min=-108.7 max=299.0
+[EVAL] Update  200 | avg_return over 30 eps = 125.1
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update  210 | return=   68.1 (n=811) | loss=1.765 | policy=-0.080 | value=3.689 | entropy=0.793 (coef=0.0490) | adv: μ=-0.000 σ=1.000
+Update  220 | return=   75.9 (n=852) | loss=1.442 | policy=-0.090 | value=3.065 | entropy=0.731 (coef=0.0489) | adv: μ=0.000 σ=1.000
+Update  230 | return=   73.7 (n=881) | loss=1.174 | policy=-0.065 | value=2.479 | entropy=0.968 (coef=0.0489) | adv: μ=0.000 σ=1.000
+Update  240 | return=   71.5 (n=908) | loss=0.970 | policy=-0.051 | value=2.043 | entropy=0.860 (coef=0.0488) | adv: μ=0.000 σ=1.000
+Update  250 | return=   65.6 (n=937) | loss=0.917 | policy=-0.044 | value=1.923 | entropy=0.855 (coef=0.0488) | adv: μ=0.000 σ=1.000
+[EVAL] Update  250 | avg_return over 30 eps = 131.9
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update  260 | return=   63.4 (n=964) | loss=0.844 | policy=-0.081 | value=1.850 | entropy=0.828 (coef=0.0487) | adv: μ=0.000 σ=1.000
+Update  270 | return=   66.0 (n=989) | loss=0.972 | policy=-0.077 | value=2.099 | entropy=1.016 (coef=0.0486) | adv: μ=0.000 σ=1.000
+Update  280 | return=   68.1 (n=1010) | loss=1.123 | policy=-0.117 | value=2.480 | entropy=1.005 (coef=0.0486) | adv: μ=0.000 σ=1.000
+Update  290 | return=   79.6 (n=1044) | loss=1.688 | policy=-0.045 | value=3.468 | entropy=0.897 (coef=0.0486) | adv: μ=-0.000 σ=1.000
+Update  300 | return=   85.2 (n=1077) | loss=1.058 | policy=-0.087 | value=2.289 | entropy=0.957 (coef=0.0485) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=118.4 std=109.6 min=-74.0 max=239.2
+[EVAL] Update  300 | avg_return over 30 eps = 118.4
+Update  310 | return=   85.2 (n=1125) | loss=1.333 | policy=-0.076 | value=2.818 | entropy=0.937 (coef=0.0485) | adv: μ=0.000 σ=1.000
+Update  320 | return=   82.0 (n=1153) | loss=0.997 | policy=-0.072 | value=2.137 | entropy=0.894 (coef=0.0484) | adv: μ=-0.000 σ=1.000
+Update  330 | return=   78.9 (n=1182) | loss=1.214 | policy=-0.084 | value=2.596 | entropy=0.934 (coef=0.0484) | adv: μ=-0.000 σ=1.000
+Update  340 | return=   77.3 (n=1210) | loss=1.355 | policy=-0.045 | value=2.800 | entropy=0.958 (coef=0.0483) | adv: μ=0.000 σ=1.000
+Update  350 | return=   75.4 (n=1234) | loss=0.786 | policy=-0.095 | value=1.763 | entropy=0.969 (coef=0.0483) | adv: μ=-0.000 σ=1.000
+[EVAL] Update  350 | avg_return over 30 eps = 179.1
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update  360 | return=   70.4 (n=1257) | loss=0.970 | policy=-0.080 | value=2.099 | entropy=1.006 (coef=0.0482) | adv: μ=0.000 σ=1.000
+Update  370 | return=   69.9 (n=1280) | loss=1.023 | policy=-0.063 | value=2.172 | entropy=0.978 (coef=0.0481) | adv: μ=0.000 σ=1.000
+Update  380 | return=   70.9 (n=1307) | loss=1.130 | policy=-0.084 | value=2.429 | entropy=0.875 (coef=0.0481) | adv: μ=0.000 σ=1.000
+Update  390 | return=   70.9 (n=1334) | loss=0.815 | policy=-0.060 | value=1.749 | entropy=1.041 (coef=0.0481) | adv: μ=-0.000 σ=1.000
+Update  400 | return=   81.0 (n=1370) | loss=0.946 | policy=-0.053 | value=1.997 | entropy=0.981 (coef=0.0480) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=114.3 std=107.3 min=-39.6 max=254.4
+[EVAL] Update  400 | avg_return over 30 eps = 114.3
+Update  410 | return=   84.1 (n=1408) | loss=1.320 | policy=-0.098 | value=2.836 | entropy=1.052 (coef=0.0479) | adv: μ=-0.000 σ=1.000
+Update  420 | return=   88.5 (n=1440) | loss=1.021 | policy=-0.098 | value=2.239 | entropy=1.098 (coef=0.0479) | adv: μ=-0.000 σ=1.000
+Update  430 | return=   83.4 (n=1474) | loss=1.642 | policy=-0.082 | value=3.449 | entropy=1.014 (coef=0.0479) | adv: μ=-0.000 σ=1.000
+Update  440 | return=   80.4 (n=1513) | loss=1.022 | policy=-0.073 | value=2.190 | entropy=1.088 (coef=0.0478) | adv: μ=0.000 σ=1.000
+Update  450 | return=   77.5 (n=1542) | loss=1.542 | policy=-0.051 | value=3.186 | entropy=1.061 (coef=0.0478) | adv: μ=0.000 σ=1.000
+[EVAL] Update  450 | avg_return over 30 eps = 185.1
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update  460 | return=   80.7 (n=1575) | loss=1.476 | policy=-0.046 | value=3.044 | entropy=1.034 (coef=0.0477) | adv: μ=0.000 σ=1.000
+Update  470 | return=   78.0 (n=1604) | loss=0.821 | policy=-0.068 | value=1.777 | entropy=1.085 (coef=0.0476) | adv: μ=0.000 σ=1.000
+Update  480 | return=   74.5 (n=1642) | loss=0.793 | policy=-0.056 | value=1.698 | entropy=1.005 (coef=0.0476) | adv: μ=-0.000 σ=1.000
+Update  490 | return=   77.5 (n=1676) | loss=1.011 | policy=-0.046 | value=2.113 | entropy=1.141 (coef=0.0476) | adv: μ=-0.000 σ=1.000
+Update  500 | return=   81.0 (n=1711) | loss=1.145 | policy=-0.086 | value=2.462 | entropy=1.103 (coef=0.0475) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=181.8 std=93.3 min=-21.5 max=274.8
+[EVAL] Update  500 | avg_return over 30 eps = 181.8
+Update  510 | return=   86.5 (n=1740) | loss=1.529 | policy=-0.034 | value=3.126 | entropy=1.135 (coef=0.0474) | adv: μ=0.000 σ=1.000
+Update  520 | return=   87.8 (n=1768) | loss=1.441 | policy=-0.082 | value=3.046 | entropy=1.149 (coef=0.0474) | adv: μ=-0.000 σ=1.000
+Update  530 | return=   90.5 (n=1796) | loss=1.014 | policy=-0.080 | value=2.189 | entropy=1.203 (coef=0.0474) | adv: μ=0.000 σ=1.000
+Update  540 | return=   89.9 (n=1824) | loss=1.424 | policy=-0.086 | value=3.019 | entropy=1.196 (coef=0.0473) | adv: μ=-0.000 σ=1.000
+Update  550 | return=   87.8 (n=1854) | loss=1.585 | policy=-0.048 | value=3.266 | entropy=1.197 (coef=0.0473) | adv: μ=-0.000 σ=1.000
+[EVAL] Update  550 | avg_return over 30 eps = 170.4
+Update  560 | return=   86.6 (n=1884) | loss=1.330 | policy=-0.078 | value=2.817 | entropy=1.117 (coef=0.0472) | adv: μ=0.000 σ=1.000
+Update  570 | return=   77.8 (n=1910) | loss=1.147 | policy=-0.043 | value=2.380 | entropy=1.140 (coef=0.0471) | adv: μ=-0.000 σ=1.000
+Update  580 | return=   81.7 (n=1933) | loss=1.385 | policy=-0.056 | value=2.882 | entropy=1.050 (coef=0.0471) | adv: μ=0.000 σ=1.000
+Update  590 | return=   81.4 (n=1959) | loss=1.397 | policy=-0.091 | value=2.975 | entropy=1.217 (coef=0.0471) | adv: μ=0.000 σ=1.000
+Update  600 | return=   83.5 (n=1982) | loss=1.628 | policy=-0.088 | value=3.431 | entropy=1.248 (coef=0.0470) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=217.5 std=61.2 min=4.0 max=270.9
+[EVAL] Update  600 | avg_return over 30 eps = 217.5
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update  610 | return=   91.2 (n=2012) | loss=1.406 | policy=-0.097 | value=3.005 | entropy=1.251 (coef=0.0470) | adv: μ=0.000 σ=1.000
+Update  620 | return=   90.8 (n=2058) | loss=1.569 | policy=-0.098 | value=3.334 | entropy=1.167 (coef=0.0469) | adv: μ=0.000 σ=1.000
+Update  630 | return=   87.6 (n=2085) | loss=1.443 | policy=-0.061 | value=3.007 | entropy=1.174 (coef=0.0469) | adv: μ=0.000 σ=1.000
+Update  640 | return=   82.4 (n=2110) | loss=1.312 | policy=-0.032 | value=2.688 | entropy=1.164 (coef=0.0468) | adv: μ=0.000 σ=1.000
+Update  650 | return=   91.9 (n=2134) | loss=2.006 | policy=-0.084 | value=4.181 | entropy=1.148 (coef=0.0468) | adv: μ=0.000 σ=1.000
+[EVAL] Update  650 | avg_return over 30 eps = 184.8
+Update  660 | return=   98.3 (n=2165) | loss=1.705 | policy=-0.091 | value=3.592 | entropy=1.166 (coef=0.0467) | adv: μ=0.000 σ=1.000
+Update  670 | return=   98.9 (n=2193) | loss=1.296 | policy=-0.065 | value=2.722 | entropy=1.004 (coef=0.0467) | adv: μ=0.000 σ=1.000
+Update  680 | return=  100.1 (n=2217) | loss=2.011 | policy=-0.033 | value=4.087 | entropy=1.112 (coef=0.0466) | adv: μ=-0.000 σ=1.000
+Update  690 | return=   93.1 (n=2248) | loss=1.457 | policy=-0.069 | value=3.052 | entropy=1.231 (coef=0.0466) | adv: μ=0.000 σ=1.000
+Update  700 | return=   90.2 (n=2280) | loss=2.287 | policy=-0.066 | value=4.707 | entropy=1.046 (coef=0.0465) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=182.4 std=94.5 min=-29.0 max=266.5
+[EVAL] Update  700 | avg_return over 30 eps = 182.4
+Update  710 | return=   90.2 (n=2313) | loss=1.570 | policy=-0.072 | value=3.283 | entropy=1.228 (coef=0.0465) | adv: μ=-0.000 σ=1.000
+Update  720 | return=   87.1 (n=2343) | loss=1.530 | policy=-0.106 | value=3.272 | entropy=1.170 (coef=0.0464) | adv: μ=-0.000 σ=1.000
+Update  730 | return=   83.7 (n=2377) | loss=1.280 | policy=-0.141 | value=2.842 | entropy=1.194 (coef=0.0464) | adv: μ=-0.000 σ=1.000
+Update  740 | return=   92.4 (n=2410) | loss=1.617 | policy=0.026 | value=3.183 | entropy=1.008 (coef=0.0463) | adv: μ=0.000 σ=1.000
+Update  750 | return=   99.7 (n=2453) | loss=1.767 | policy=-0.017 | value=3.569 | entropy=1.176 (coef=0.0463) | adv: μ=-0.000 σ=1.000
+[EVAL] Update  750 | avg_return over 30 eps = 138.6
+Update  760 | return=   98.4 (n=2478) | loss=1.958 | policy=-0.090 | value=4.097 | entropy=1.247 (coef=0.0462) | adv: μ=-0.000 σ=1.000
+Update  770 | return=   94.5 (n=2502) | loss=1.270 | policy=-0.093 | value=2.725 | entropy=1.192 (coef=0.0462) | adv: μ=0.000 σ=1.000
+Update  780 | return=   89.0 (n=2532) | loss=1.297 | policy=-0.065 | value=2.723 | entropy=1.167 (coef=0.0461) | adv: μ=0.000 σ=1.000
+Update  790 | return=   89.3 (n=2565) | loss=1.733 | policy=-0.085 | value=3.636 | entropy=1.209 (coef=0.0461) | adv: μ=0.000 σ=1.000
+Update  800 | return=   97.6 (n=2593) | loss=1.428 | policy=-0.083 | value=3.021 | entropy=1.172 (coef=0.0460) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=216.0 std=57.7 min=6.3 max=267.5
+[EVAL] Update  800 | avg_return over 30 eps = 216.0
+Update  810 | return=   94.1 (n=2615) | loss=1.580 | policy=-0.071 | value=3.302 | entropy=1.074 (coef=0.0460) | adv: μ=0.000 σ=1.000
+Update  820 | return=   98.2 (n=2635) | loss=1.562 | policy=-0.084 | value=3.291 | entropy=1.174 (coef=0.0459) | adv: μ=-0.000 σ=1.000
+Update  830 | return=  100.2 (n=2667) | loss=1.636 | policy=-0.078 | value=3.426 | entropy=1.202 (coef=0.0459) | adv: μ=-0.000 σ=1.000
+Update  840 | return=  105.3 (n=2700) | loss=1.928 | policy=-0.048 | value=3.951 | entropy=1.201 (coef=0.0458) | adv: μ=-0.000 σ=1.000
+Update  850 | return=  106.2 (n=2731) | loss=1.845 | policy=-0.041 | value=3.771 | entropy=1.048 (coef=0.0458) | adv: μ=0.000 σ=1.000
+[EVAL] Update  850 | avg_return over 30 eps = 200.9
+Update  860 | return=  111.2 (n=2753) | loss=1.753 | policy=-0.080 | value=3.667 | entropy=1.226 (coef=0.0457) | adv: μ=0.000 σ=1.000
+Update  870 | return=  115.4 (n=2777) | loss=1.546 | policy=-0.074 | value=3.239 | entropy=1.124 (coef=0.0457) | adv: μ=-0.000 σ=1.000
+Update  880 | return=  117.3 (n=2802) | loss=1.448 | policy=-0.100 | value=3.095 | entropy=1.133 (coef=0.0456) | adv: μ=0.000 σ=1.000
+Update  890 | return=  122.4 (n=2828) | loss=1.632 | policy=-0.074 | value=3.412 | entropy=1.169 (coef=0.0456) | adv: μ=-0.000 σ=1.000
+Update  900 | return=  120.2 (n=2856) | loss=1.587 | policy=-0.081 | value=3.335 | entropy=1.185 (coef=0.0455) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=161.6 std=67.7 min=28.5 max=252.9
+[EVAL] Update  900 | avg_return over 30 eps = 161.6
+Update  910 | return=  112.0 (n=2886) | loss=1.234 | policy=-0.079 | value=2.626 | entropy=1.127 (coef=0.0455) | adv: μ=0.000 σ=1.000
+Update  920 | return=  105.9 (n=2911) | loss=1.995 | policy=-0.043 | value=4.076 | entropy=1.029 (coef=0.0454) | adv: μ=0.000 σ=1.000
+Update  930 | return=  106.4 (n=2936) | loss=1.778 | policy=-0.098 | value=3.752 | entropy=1.198 (coef=0.0454) | adv: μ=-0.000 σ=1.000
+Update  940 | return=  106.7 (n=2959) | loss=2.215 | policy=-0.040 | value=4.510 | entropy=1.192 (coef=0.0453) | adv: μ=0.000 σ=1.000
+Update  950 | return=  115.4 (n=2989) | loss=2.346 | policy=-0.060 | value=4.812 | entropy=1.094 (coef=0.0453) | adv: μ=-0.000 σ=1.000
+[EVAL] Update  950 | avg_return over 30 eps = 184.9
+Update  960 | return=  116.3 (n=3016) | loss=1.567 | policy=-0.100 | value=3.334 | entropy=1.107 (coef=0.0452) | adv: μ=-0.000 σ=1.000
+Update  970 | return=  120.6 (n=3040) | loss=1.989 | policy=-0.065 | value=4.108 | entropy=1.215 (coef=0.0452) | adv: μ=0.000 σ=1.000
+Update  980 | return=  117.2 (n=3067) | loss=1.524 | policy=-0.064 | value=3.176 | entropy=1.216 (coef=0.0451) | adv: μ=0.000 σ=1.000
+Update  990 | return=  116.9 (n=3094) | loss=1.989 | policy=-0.110 | value=4.197 | entropy=1.087 (coef=0.0451) | adv: μ=-0.000 σ=1.000
+Update 1000 | return=  114.7 (n=3118) | loss=1.574 | policy=-0.037 | value=3.224 | entropy=1.042 (coef=0.0450) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=145.4 std=62.1 min=5.4 max=259.8
+[EVAL] Update 1000 | avg_return over 30 eps = 145.4
+Update 1010 | return=  111.2 (n=3146) | loss=1.562 | policy=-0.096 | value=3.316 | entropy=1.254 (coef=0.0450) | adv: μ=0.000 σ=1.000
+Update 1020 | return=  105.5 (n=3171) | loss=1.627 | policy=-0.063 | value=3.380 | entropy=1.200 (coef=0.0449) | adv: μ=0.000 σ=1.000
+Update 1030 | return=  101.4 (n=3199) | loss=1.806 | policy=-0.072 | value=3.755 | entropy=1.205 (coef=0.0449) | adv: μ=0.000 σ=1.000
+Update 1040 | return=   96.9 (n=3222) | loss=1.873 | policy=-0.071 | value=3.888 | entropy=1.135 (coef=0.0448) | adv: μ=-0.000 σ=1.000
+Update 1050 | return=   97.6 (n=3245) | loss=1.383 | policy=-0.100 | value=2.964 | entropy=1.174 (coef=0.0448) | adv: μ=0.000 σ=1.000
+[EVAL] Update 1050 | avg_return over 30 eps = 171.0
+Update 1060 | return=   98.1 (n=3269) | loss=1.451 | policy=-0.046 | value=2.994 | entropy=1.189 (coef=0.0447) | adv: μ=-0.000 σ=1.000
+Update 1070 | return=   95.1 (n=3292) | loss=1.616 | policy=-0.092 | value=3.416 | entropy=1.192 (coef=0.0447) | adv: μ=0.000 σ=1.000
+Update 1080 | return=   94.6 (n=3316) | loss=1.951 | policy=-0.085 | value=4.071 | entropy=1.212 (coef=0.0446) | adv: μ=0.000 σ=1.000
+Update 1090 | return=   91.0 (n=3341) | loss=1.449 | policy=-0.069 | value=3.036 | entropy=1.282 (coef=0.0446) | adv: μ=0.000 σ=1.000
+Update 1100 | return=   99.2 (n=3365) | loss=1.677 | policy=-0.077 | value=3.508 | entropy=1.242 (coef=0.0445) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=192.5 std=71.6 min=33.0 max=273.4
+[EVAL] Update 1100 | avg_return over 30 eps = 192.5
+Update 1110 | return=  111.2 (n=3389) | loss=1.242 | policy=-0.089 | value=2.664 | entropy=1.160 (coef=0.0445) | adv: μ=0.000 σ=1.000
+Update 1120 | return=  111.1 (n=3415) | loss=1.288 | policy=-0.048 | value=2.673 | entropy=1.183 (coef=0.0444) | adv: μ=-0.000 σ=1.000
+Update 1130 | return=  114.0 (n=3441) | loss=1.379 | policy=-0.036 | value=2.829 | entropy=1.016 (coef=0.0444) | adv: μ=0.000 σ=1.000
+Update 1140 | return=  104.8 (n=3467) | loss=1.325 | policy=-0.093 | value=2.836 | entropy=1.222 (coef=0.0443) | adv: μ=-0.000 σ=1.000
+Update 1150 | return=   95.5 (n=3491) | loss=1.545 | policy=-0.089 | value=3.269 | entropy=1.204 (coef=0.0443) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 1150 | avg_return over 30 eps = 179.9
+Update 1160 | return=   89.8 (n=3520) | loss=1.630 | policy=-0.059 | value=3.377 | entropy=1.223 (coef=0.0442) | adv: μ=0.000 σ=1.000
+Update 1170 | return=   99.1 (n=3547) | loss=1.713 | policy=-0.068 | value=3.563 | entropy=1.236 (coef=0.0442) | adv: μ=0.000 σ=1.000
+Update 1180 | return=  110.6 (n=3570) | loss=1.483 | policy=-0.080 | value=3.126 | entropy=1.230 (coef=0.0441) | adv: μ=0.000 σ=1.000
+Update 1190 | return=  116.5 (n=3593) | loss=1.836 | policy=-0.079 | value=3.831 | entropy=1.125 (coef=0.0441) | adv: μ=-0.000 σ=1.000
+Update 1200 | return=  123.3 (n=3618) | loss=1.245 | policy=-0.043 | value=2.577 | entropy=1.187 (coef=0.0440) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=190.3 std=58.3 min=20.3 max=265.7
+[EVAL] Update 1200 | avg_return over 30 eps = 190.3
+Update 1210 | return=  118.4 (n=3639) | loss=1.483 | policy=-0.073 | value=3.113 | entropy=1.226 (coef=0.0440) | adv: μ=0.000 σ=1.000
+Update 1220 | return=  100.8 (n=3663) | loss=1.487 | policy=-0.056 | value=3.085 | entropy=1.215 (coef=0.0439) | adv: μ=0.000 σ=1.000
+Update 1230 | return=   97.0 (n=3691) | loss=2.038 | policy=-0.082 | value=4.239 | entropy=1.134 (coef=0.0439) | adv: μ=0.000 σ=1.000
+Update 1240 | return=   98.4 (n=3722) | loss=1.864 | policy=-0.055 | value=3.839 | entropy=1.232 (coef=0.0438) | adv: μ=0.000 σ=1.000
+Update 1250 | return=   98.1 (n=3753) | loss=1.548 | policy=-0.057 | value=3.209 | entropy=1.272 (coef=0.0438) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 1250 | avg_return over 30 eps = 196.3
+Update 1260 | return=  105.3 (n=3774) | loss=2.077 | policy=-0.052 | value=4.259 | entropy=1.204 (coef=0.0437) | adv: μ=-0.000 σ=1.000
+Update 1270 | return=  107.4 (n=3799) | loss=1.310 | policy=-0.082 | value=2.785 | entropy=1.201 (coef=0.0437) | adv: μ=0.000 σ=1.000
+Update 1280 | return=  107.1 (n=3826) | loss=1.531 | policy=-0.087 | value=3.236 | entropy=1.253 (coef=0.0436) | adv: μ=-0.000 σ=1.000
+Update 1290 | return=  114.7 (n=3847) | loss=1.526 | policy=-0.072 | value=3.196 | entropy=1.180 (coef=0.0436) | adv: μ=-0.000 σ=1.000
+Update 1300 | return=  114.5 (n=3869) | loss=1.666 | policy=-0.109 | value=3.550 | entropy=1.208 (coef=0.0435) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=184.3 std=59.9 min=16.2 max=271.5
+[EVAL] Update 1300 | avg_return over 30 eps = 184.3
+Update 1310 | return=  118.7 (n=3895) | loss=1.480 | policy=-0.065 | value=3.090 | entropy=1.201 (coef=0.0435) | adv: μ=0.000 σ=1.000
+Update 1320 | return=  121.3 (n=3918) | loss=1.767 | policy=-0.047 | value=3.630 | entropy=1.205 (coef=0.0434) | adv: μ=0.000 σ=1.000
+Update 1330 | return=  116.3 (n=3940) | loss=1.831 | policy=-0.057 | value=3.776 | entropy=1.113 (coef=0.0433) | adv: μ=-0.000 σ=1.000
+Update 1340 | return=  111.7 (n=3961) | loss=1.525 | policy=-0.052 | value=3.154 | entropy=1.221 (coef=0.0433) | adv: μ=0.000 σ=1.000
+Update 1350 | return=  114.4 (n=3984) | loss=2.041 | policy=-0.047 | value=4.176 | entropy=1.108 (coef=0.0433) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 1350 | avg_return over 30 eps = 234.6
+[SAVE] New best model saved to: checkpoints/a2c_2048_10000.pt
+Update 1360 | return=  112.4 (n=4006) | loss=1.250 | policy=-0.039 | value=2.579 | entropy=1.158 (coef=0.0432) | adv: μ=0.000 σ=1.000
+Update 1370 | return=  118.2 (n=4029) | loss=1.580 | policy=-0.094 | value=3.348 | entropy=1.177 (coef=0.0432) | adv: μ=-0.000 σ=1.000
+Update 1380 | return=  115.9 (n=4054) | loss=1.911 | policy=-0.077 | value=3.976 | entropy=1.209 (coef=0.0431) | adv: μ=0.000 σ=1.000
+Update 1390 | return=  111.3 (n=4078) | loss=1.906 | policy=-0.064 | value=3.940 | entropy=1.161 (coef=0.0431) | adv: μ=-0.000 σ=1.000
+Update 1400 | return=  108.4 (n=4100) | loss=1.667 | policy=-0.074 | value=3.481 | entropy=1.205 (coef=0.0430) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=159.9 std=78.4 min=-11.2 max=270.8
+[EVAL] Update 1400 | avg_return over 30 eps = 159.9
+Update 1410 | return=   98.0 (n=4129) | loss=1.517 | policy=-0.059 | value=3.153 | entropy=1.259 (coef=0.0430) | adv: μ=-0.000 σ=1.000
+Update 1420 | return=  107.9 (n=4152) | loss=1.523 | policy=-0.050 | value=3.147 | entropy=1.264 (coef=0.0429) | adv: μ=-0.000 σ=1.000
+Update 1430 | return=  111.1 (n=4174) | loss=1.996 | policy=0.020 | value=3.953 | entropy=0.821 (coef=0.0428) | adv: μ=-0.000 σ=1.000
+Update 1440 | return=  115.2 (n=4197) | loss=1.332 | policy=-0.040 | value=2.745 | entropy=1.062 (coef=0.0428) | adv: μ=-0.000 σ=1.000
+Update 1450 | return=  115.5 (n=4219) | loss=1.405 | policy=-0.017 | value=2.842 | entropy=1.146 (coef=0.0428) | adv: μ=0.000 σ=1.000
+[EVAL] Update 1450 | avg_return over 30 eps = 172.4
+Update 1460 | return=  113.9 (n=4243) | loss=1.824 | policy=-0.042 | value=3.731 | entropy=1.121 (coef=0.0427) | adv: μ=-0.000 σ=1.000
+Update 1470 | return=  108.2 (n=4265) | loss=1.878 | policy=-0.081 | value=3.917 | entropy=1.258 (coef=0.0427) | adv: μ=0.000 σ=1.000
+Update 1480 | return=  108.6 (n=4287) | loss=2.095 | policy=-0.080 | value=4.349 | entropy=1.215 (coef=0.0426) | adv: μ=0.000 σ=1.000
+Update 1490 | return=  113.2 (n=4311) | loss=1.622 | policy=-0.044 | value=3.332 | entropy=1.265 (coef=0.0426) | adv: μ=-0.000 σ=1.000
+Update 1500 | return=  116.6 (n=4337) | loss=1.473 | policy=-0.063 | value=3.072 | entropy=1.246 (coef=0.0425) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=160.1 std=85.9 min=-10.2 max=257.5
+[EVAL] Update 1500 | avg_return over 30 eps = 160.1
+Update 1510 | return=  111.5 (n=4360) | loss=1.229 | policy=-0.077 | value=2.612 | entropy=1.245 (coef=0.0425) | adv: μ=0.000 σ=1.000
+Update 1520 | return=  108.7 (n=4383) | loss=1.444 | policy=-0.076 | value=3.040 | entropy=1.233 (coef=0.0424) | adv: μ=0.000 σ=1.000
+Update 1530 | return=  112.0 (n=4403) | loss=1.444 | policy=-0.037 | value=2.962 | entropy=1.270 (coef=0.0423) | adv: μ=0.000 σ=1.000
+Update 1540 | return=  104.2 (n=4424) | loss=1.496 | policy=-0.059 | value=3.111 | entropy=1.040 (coef=0.0423) | adv: μ=0.000 σ=1.000
+Update 1550 | return=  115.6 (n=4447) | loss=1.381 | policy=-0.072 | value=2.905 | entropy=1.203 (coef=0.0423) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 1550 | avg_return over 30 eps = 182.5
+Update 1560 | return=  119.8 (n=4473) | loss=1.661 | policy=-0.112 | value=3.545 | entropy=0.884 (coef=0.0422) | adv: μ=-0.000 σ=1.000
+Update 1570 | return=  122.2 (n=4496) | loss=1.305 | policy=-0.079 | value=2.770 | entropy=1.199 (coef=0.0421) | adv: μ=0.000 σ=1.000
+Update 1580 | return=  121.4 (n=4519) | loss=1.453 | policy=-0.021 | value=2.948 | entropy=1.219 (coef=0.0421) | adv: μ=-0.000 σ=1.000
+Update 1590 | return=  115.6 (n=4544) | loss=2.343 | policy=-0.100 | value=4.886 | entropy=1.081 (coef=0.0421) | adv: μ=-0.000 σ=1.000
+Update 1600 | return=  117.6 (n=4566) | loss=1.504 | policy=-0.076 | value=3.161 | entropy=1.196 (coef=0.0420) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=214.2 std=54.9 min=106.3 max=274.4
+[EVAL] Update 1600 | avg_return over 30 eps = 214.2
+Update 1610 | return=  116.1 (n=4587) | loss=1.696 | policy=-0.048 | value=3.488 | entropy=1.234 (coef=0.0420) | adv: μ=-0.000 σ=1.000
+Update 1620 | return=  119.6 (n=4610) | loss=1.475 | policy=-0.037 | value=3.024 | entropy=1.260 (coef=0.0419) | adv: μ=0.000 σ=1.000
+Update 1630 | return=  127.3 (n=4637) | loss=1.727 | policy=-0.092 | value=3.638 | entropy=1.234 (coef=0.0418) | adv: μ=0.000 σ=1.000
+Update 1640 | return=  129.0 (n=4658) | loss=1.318 | policy=-0.034 | value=2.703 | entropy=1.111 (coef=0.0418) | adv: μ=-0.000 σ=1.000
+Update 1650 | return=  126.6 (n=4685) | loss=1.846 | policy=-0.064 | value=3.821 | entropy=1.235 (coef=0.0418) | adv: μ=0.000 σ=1.000
+[EVAL] Update 1650 | avg_return over 30 eps = 119.9
+Update 1660 | return=  134.9 (n=4711) | loss=1.614 | policy=-0.065 | value=3.358 | entropy=1.122 (coef=0.0417) | adv: μ=0.000 σ=1.000
+Update 1670 | return=  126.9 (n=4732) | loss=1.582 | policy=-0.064 | value=3.292 | entropy=1.173 (coef=0.0416) | adv: μ=0.000 σ=1.000
+Update 1680 | return=  126.6 (n=4755) | loss=1.886 | policy=-0.029 | value=3.830 | entropy=1.046 (coef=0.0416) | adv: μ=-0.000 σ=1.000
+Update 1690 | return=  131.3 (n=4777) | loss=1.985 | policy=-0.072 | value=4.114 | entropy=1.132 (coef=0.0416) | adv: μ=0.000 σ=1.000
+Update 1700 | return=  130.0 (n=4801) | loss=1.691 | policy=-0.051 | value=3.484 | entropy=1.213 (coef=0.0415) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=151.8 std=49.0 min=38.1 max=262.4
+[EVAL] Update 1700 | avg_return over 30 eps = 151.8
+Update 1710 | return=  126.8 (n=4834) | loss=1.610 | policy=-0.078 | value=3.377 | entropy=1.214 (coef=0.0415) | adv: μ=-0.000 σ=1.000
+Update 1720 | return=  114.0 (n=4863) | loss=1.651 | policy=-0.064 | value=3.432 | entropy=1.218 (coef=0.0414) | adv: μ=-0.000 σ=1.000
+Update 1730 | return=  116.6 (n=4886) | loss=1.575 | policy=-0.093 | value=3.336 | entropy=1.242 (coef=0.0413) | adv: μ=-0.000 σ=1.000
+Update 1740 | return=  115.9 (n=4910) | loss=1.938 | policy=-0.013 | value=3.902 | entropy=1.133 (coef=0.0413) | adv: μ=-0.000 σ=1.000
+Update 1750 | return=  114.5 (n=4931) | loss=1.501 | policy=-0.067 | value=3.135 | entropy=1.181 (coef=0.0413) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 1750 | avg_return over 30 eps = 186.2
+Update 1760 | return=  124.1 (n=4954) | loss=1.369 | policy=-0.047 | value=2.833 | entropy=1.230 (coef=0.0412) | adv: μ=0.000 σ=1.000
+Update 1770 | return=  127.3 (n=4976) | loss=1.630 | policy=-0.088 | value=3.435 | entropy=1.229 (coef=0.0411) | adv: μ=-0.000 σ=1.000
+Update 1780 | return=  125.9 (n=5000) | loss=1.369 | policy=-0.079 | value=2.895 | entropy=1.256 (coef=0.0411) | adv: μ=0.000 σ=1.000
+Update 1790 | return=  131.3 (n=5025) | loss=1.527 | policy=-0.100 | value=3.253 | entropy=1.130 (coef=0.0411) | adv: μ=-0.000 σ=1.000
+Update 1800 | return=  126.1 (n=5048) | loss=1.755 | policy=-0.114 | value=3.738 | entropy=1.244 (coef=0.0410) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=99.0 std=57.6 min=19.9 max=257.7
+[EVAL] Update 1800 | avg_return over 30 eps = 99.0
+Update 1810 | return=  126.9 (n=5074) | loss=2.339 | policy=-0.005 | value=4.689 | entropy=0.922 (coef=0.0410) | adv: μ=-0.000 σ=1.000
+Update 1820 | return=  129.2 (n=5099) | loss=1.523 | policy=-0.055 | value=3.156 | entropy=1.216 (coef=0.0409) | adv: μ=-0.000 σ=1.000
+Update 1830 | return=  127.9 (n=5120) | loss=1.595 | policy=-0.058 | value=3.307 | entropy=1.131 (coef=0.0408) | adv: μ=0.000 σ=1.000
+Update 1840 | return=  131.6 (n=5142) | loss=1.926 | policy=-0.094 | value=4.040 | entropy=1.086 (coef=0.0408) | adv: μ=0.000 σ=1.000
+Update 1850 | return=  124.7 (n=5166) | loss=1.772 | policy=-0.044 | value=3.632 | entropy=1.212 (coef=0.0408) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 1850 | avg_return over 30 eps = 170.2
+Update 1860 | return=  120.1 (n=5189) | loss=1.515 | policy=-0.066 | value=3.162 | entropy=1.234 (coef=0.0407) | adv: μ=-0.000 σ=1.000
+Update 1870 | return=  113.0 (n=5216) | loss=1.646 | policy=-0.096 | value=3.483 | entropy=1.127 (coef=0.0406) | adv: μ=0.000 σ=1.000
+Update 1880 | return=  104.4 (n=5239) | loss=1.453 | policy=-0.051 | value=3.008 | entropy=1.227 (coef=0.0406) | adv: μ=0.000 σ=1.000
+Update 1890 | return=  107.0 (n=5263) | loss=1.577 | policy=-0.071 | value=3.296 | entropy=1.180 (coef=0.0406) | adv: μ=0.000 σ=1.000
+Update 1900 | return=  107.3 (n=5286) | loss=1.676 | policy=-0.042 | value=3.437 | entropy=1.134 (coef=0.0405) | adv: μ=0.000 σ=1.000
+    [EVAL STATS] mean=179.5 std=67.3 min=12.5 max=274.5
+[EVAL] Update 1900 | avg_return over 30 eps = 179.5
+Update 1910 | return=  115.9 (n=5311) | loss=1.781 | policy=-0.035 | value=3.632 | entropy=1.152 (coef=0.0404) | adv: μ=0.000 σ=1.000
+Update 1920 | return=  120.0 (n=5335) | loss=1.538 | policy=-0.067 | value=3.210 | entropy=1.221 (coef=0.0404) | adv: μ=0.000 σ=1.000
+Update 1930 | return=  116.6 (n=5361) | loss=1.955 | policy=-0.066 | value=4.041 | entropy=1.151 (coef=0.0403) | adv: μ=-0.000 σ=1.000
+Update 1940 | return=  121.9 (n=5384) | loss=1.797 | policy=-0.072 | value=3.739 | entropy=1.150 (coef=0.0403) | adv: μ=0.000 σ=1.000
+Update 1950 | return=  123.0 (n=5409) | loss=1.910 | policy=-0.052 | value=3.925 | entropy=1.210 (coef=0.0403) | adv: μ=0.000 σ=1.000
+[EVAL] Update 1950 | avg_return over 30 eps = 164.9
+Update 1960 | return=  119.6 (n=5431) | loss=1.662 | policy=-0.090 | value=3.505 | entropy=1.196 (coef=0.0402) | adv: μ=-0.000 σ=1.000
+Update 1970 | return=  125.0 (n=5456) | loss=1.810 | policy=-0.087 | value=3.793 | entropy=1.208 (coef=0.0401) | adv: μ=0.000 σ=1.000
+Update 1980 | return=  122.1 (n=5481) | loss=1.620 | policy=-0.062 | value=3.363 | entropy=1.119 (coef=0.0401) | adv: μ=0.000 σ=1.000
+Update 1990 | return=  125.1 (n=5502) | loss=1.891 | policy=-0.057 | value=3.896 | entropy=1.131 (coef=0.0401) | adv: μ=-0.000 σ=1.000
+Update 2000 | return=  126.9 (n=5526) | loss=2.216 | policy=-0.032 | value=4.496 | entropy=0.943 (coef=0.0400) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=159.3 std=77.5 min=3.4 max=264.9
+[EVAL] Update 2000 | avg_return over 30 eps = 159.3
+Update 2010 | return=  130.6 (n=5550) | loss=1.499 | policy=-0.069 | value=3.136 | entropy=1.104 (coef=0.0399) | adv: μ=-0.000 σ=1.000
+Update 2020 | return=  130.1 (n=5572) | loss=1.964 | policy=-0.066 | value=4.059 | entropy=1.095 (coef=0.0399) | adv: μ=0.000 σ=1.000
+Update 2030 | return=  125.9 (n=5597) | loss=1.726 | policy=-0.067 | value=3.586 | entropy=1.124 (coef=0.0398) | adv: μ=0.000 σ=1.000
+Update 2040 | return=  126.4 (n=5625) | loss=1.820 | policy=-0.074 | value=3.788 | entropy=1.135 (coef=0.0398) | adv: μ=-0.000 σ=1.000
+Update 2050 | return=  123.0 (n=5651) | loss=1.457 | policy=-0.073 | value=3.060 | entropy=1.175 (coef=0.0398) | adv: μ=0.000 σ=1.000
+[EVAL] Update 2050 | avg_return over 30 eps = 160.8
+Update 2060 | return=  131.0 (n=5673) | loss=1.482 | policy=-0.085 | value=3.134 | entropy=1.138 (coef=0.0397) | adv: μ=0.000 σ=1.000
+Update 2070 | return=  142.6 (n=5696) | loss=1.876 | policy=-0.050 | value=3.853 | entropy=1.099 (coef=0.0397) | adv: μ=0.000 σ=1.000
+Update 2080 | return=  142.4 (n=5717) | loss=1.729 | policy=-0.046 | value=3.551 | entropy=1.181 (coef=0.0396) | adv: μ=0.000 σ=1.000
+Update 2090 | return=  135.3 (n=5740) | loss=1.302 | policy=-0.091 | value=2.785 | entropy=1.201 (coef=0.0396) | adv: μ=-0.000 σ=1.000
+Update 2100 | return=  136.8 (n=5764) | loss=1.680 | policy=-0.108 | value=3.578 | entropy=1.142 (coef=0.0395) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=167.1 std=67.5 min=3.1 max=281.7
+[EVAL] Update 2100 | avg_return over 30 eps = 167.1
+Update 2110 | return=  139.5 (n=5787) | loss=1.307 | policy=-0.093 | value=2.799 | entropy=1.123 (coef=0.0395) | adv: μ=0.000 σ=1.000
+Update 2120 | return=  133.4 (n=5811) | loss=1.751 | policy=-0.070 | value=3.642 | entropy=1.168 (coef=0.0394) | adv: μ=-0.000 σ=1.000
+Update 2130 | return=  141.7 (n=5834) | loss=2.318 | policy=0.015 | value=4.605 | entropy=1.087 (coef=0.0394) | adv: μ=-0.000 σ=1.000
+Update 2140 | return=  152.2 (n=5858) | loss=1.781 | policy=-0.085 | value=3.732 | entropy=1.131 (coef=0.0393) | adv: μ=0.000 σ=1.000
+Update 2150 | return=  153.8 (n=5880) | loss=1.473 | policy=-0.060 | value=3.067 | entropy=1.163 (coef=0.0393) | adv: μ=0.000 σ=1.000
+[EVAL] Update 2150 | avg_return over 30 eps = 151.7
+Update 2160 | return=  154.7 (n=5901) | loss=1.044 | policy=-0.075 | value=2.238 | entropy=1.187 (coef=0.0392) | adv: μ=0.000 σ=1.000
+Update 2170 | return=  149.6 (n=5924) | loss=1.474 | policy=-0.050 | value=3.048 | entropy=1.141 (coef=0.0392) | adv: μ=0.000 σ=1.000
+Update 2180 | return=  142.1 (n=5953) | loss=2.304 | policy=-0.058 | value=4.726 | entropy=0.992 (coef=0.0391) | adv: μ=-0.000 σ=1.000
+Update 2190 | return=  138.7 (n=5975) | loss=1.165 | policy=-0.060 | value=2.450 | entropy=1.174 (coef=0.0391) | adv: μ=0.000 σ=1.000
+Update 2200 | return=  142.2 (n=6000) | loss=1.362 | policy=-0.085 | value=2.894 | entropy=1.069 (coef=0.0390) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=129.1 std=38.0 min=40.9 max=292.0
+[EVAL] Update 2200 | avg_return over 30 eps = 129.1
+Update 2210 | return=  151.7 (n=6022) | loss=1.843 | policy=-0.039 | value=3.764 | entropy=1.077 (coef=0.0390) | adv: μ=0.000 σ=1.000
+Update 2220 | return=  152.5 (n=6045) | loss=1.599 | policy=-0.068 | value=3.334 | entropy=1.113 (coef=0.0389) | adv: μ=-0.000 σ=1.000
+Update 2230 | return=  158.0 (n=6071) | loss=1.919 | policy=-0.049 | value=3.937 | entropy=1.004 (coef=0.0389) | adv: μ=0.000 σ=1.000
+Update 2240 | return=  166.0 (n=6092) | loss=1.642 | policy=-0.046 | value=3.375 | entropy=1.155 (coef=0.0388) | adv: μ=-0.000 σ=1.000
+Update 2250 | return=  158.7 (n=6118) | loss=1.637 | policy=-0.043 | value=3.359 | entropy=1.146 (coef=0.0388) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 2250 | avg_return over 30 eps = 161.3
+Update 2260 | return=  164.8 (n=6140) | loss=1.486 | policy=-0.072 | value=3.117 | entropy=1.163 (coef=0.0387) | adv: μ=-0.000 σ=1.000
+Update 2270 | return=  150.5 (n=6161) | loss=1.977 | policy=-0.064 | value=4.082 | entropy=1.116 (coef=0.0387) | adv: μ=0.000 σ=1.000
+Update 2280 | return=  141.8 (n=6184) | loss=1.990 | policy=-0.084 | value=4.148 | entropy=1.197 (coef=0.0386) | adv: μ=0.000 σ=1.000
+Update 2290 | return=  139.0 (n=6207) | loss=1.400 | policy=-0.042 | value=2.885 | entropy=1.209 (coef=0.0386) | adv: μ=0.000 σ=1.000
+Update 2300 | return=  139.9 (n=6228) | loss=1.638 | policy=-0.062 | value=3.401 | entropy=1.180 (coef=0.0385) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=127.3 std=49.7 min=54.9 max=267.7
+[EVAL] Update 2300 | avg_return over 30 eps = 127.3
+Update 2310 | return=  140.6 (n=6249) | loss=1.793 | policy=-0.089 | value=3.763 | entropy=1.161 (coef=0.0385) | adv: μ=-0.000 σ=1.000
+Update 2320 | return=  149.0 (n=6275) | loss=1.589 | policy=-0.040 | value=3.259 | entropy=1.145 (coef=0.0384) | adv: μ=0.000 σ=1.000
+Update 2330 | return=  146.5 (n=6299) | loss=1.632 | policy=-0.045 | value=3.355 | entropy=1.165 (coef=0.0384) | adv: μ=-0.000 σ=1.000
+Update 2340 | return=  129.1 (n=6323) | loss=1.567 | policy=-0.030 | value=3.195 | entropy=1.162 (coef=0.0383) | adv: μ=0.000 σ=1.000
+Update 2350 | return=  121.1 (n=6352) | loss=1.639 | policy=-0.090 | value=3.458 | entropy=1.173 (coef=0.0383) | adv: μ=0.000 σ=1.000
+[EVAL] Update 2350 | avg_return over 30 eps = 159.3
+Update 2360 | return=  117.0 (n=6378) | loss=1.514 | policy=-0.068 | value=3.165 | entropy=1.091 (coef=0.0382) | adv: μ=-0.000 σ=1.000
+Update 2370 | return=  127.6 (n=6404) | loss=1.450 | policy=-0.072 | value=3.044 | entropy=1.169 (coef=0.0382) | adv: μ=0.000 σ=1.000
+Update 2380 | return=  140.5 (n=6425) | loss=1.696 | policy=-0.080 | value=3.552 | entropy=1.138 (coef=0.0381) | adv: μ=-0.000 σ=1.000
+Update 2390 | return=  146.6 (n=6447) | loss=1.551 | policy=-0.067 | value=3.236 | entropy=1.140 (coef=0.0381) | adv: μ=0.000 σ=1.000
+Update 2400 | return=  157.0 (n=6468) | loss=1.427 | policy=-0.095 | value=3.042 | entropy=1.132 (coef=0.0380) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=136.2 std=42.5 min=8.8 max=245.0
+[EVAL] Update 2400 | avg_return over 30 eps = 136.2
+Update 2410 | return=  158.9 (n=6491) | loss=1.709 | policy=-0.101 | value=3.620 | entropy=1.070 (coef=0.0380) | adv: μ=0.000 σ=1.000
+Update 2420 | return=  163.0 (n=6512) | loss=1.407 | policy=-0.087 | value=2.987 | entropy=1.179 (coef=0.0379) | adv: μ=0.000 σ=1.000
+Update 2430 | return=  156.3 (n=6535) | loss=1.641 | policy=-0.066 | value=3.413 | entropy=1.153 (coef=0.0379) | adv: μ=-0.000 σ=1.000
+Update 2440 | return=  154.9 (n=6558) | loss=1.331 | policy=-0.054 | value=2.768 | entropy=1.137 (coef=0.0378) | adv: μ=-0.000 σ=1.000
+Update 2450 | return=  153.1 (n=6580) | loss=1.481 | policy=-0.066 | value=3.094 | entropy=1.186 (coef=0.0378) | adv: μ=0.000 σ=1.000
+[EVAL] Update 2450 | avg_return over 30 eps = 147.4
+Update 2460 | return=  154.6 (n=6601) | loss=1.674 | policy=-0.054 | value=3.457 | entropy=1.155 (coef=0.0377) | adv: μ=-0.000 σ=1.000
+Update 2470 | return=  148.7 (n=6624) | loss=1.772 | policy=-0.074 | value=3.694 | entropy=1.143 (coef=0.0377) | adv: μ=-0.000 σ=1.000
+Update 2480 | return=  142.8 (n=6647) | loss=2.029 | policy=-0.043 | value=4.143 | entropy=1.064 (coef=0.0376) | adv: μ=0.000 σ=1.000
+Update 2490 | return=  142.8 (n=6669) | loss=1.256 | policy=-0.086 | value=2.685 | entropy=1.130 (coef=0.0376) | adv: μ=0.000 σ=1.000
+Update 2500 | return=  132.0 (n=6691) | loss=1.617 | policy=-0.052 | value=3.338 | entropy=1.066 (coef=0.0375) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=143.1 std=61.4 min=-10.3 max=276.4
+[EVAL] Update 2500 | avg_return over 30 eps = 143.1
+Update 2510 | return=  130.5 (n=6718) | loss=1.922 | policy=-0.031 | value=3.906 | entropy=1.139 (coef=0.0375) | adv: μ=0.000 σ=1.000
+Update 2520 | return=  138.1 (n=6751) | loss=1.739 | policy=-0.092 | value=3.661 | entropy=1.141 (coef=0.0374) | adv: μ=-0.000 σ=1.000
+Update 2530 | return=  142.8 (n=6774) | loss=1.578 | policy=-0.047 | value=3.251 | entropy=1.195 (coef=0.0374) | adv: μ=0.000 σ=1.000
+Update 2540 | return=  149.1 (n=6798) | loss=1.636 | policy=-0.037 | value=3.345 | entropy=1.070 (coef=0.0373) | adv: μ=0.000 σ=1.000
+Update 2550 | return=  152.1 (n=6820) | loss=1.509 | policy=-0.028 | value=3.074 | entropy=1.165 (coef=0.0372) | adv: μ=-0.000 σ=1.000
+[EVAL] Update 2550 | avg_return over 30 eps = 165.5
+Update 2560 | return=  159.4 (n=6842) | loss=1.614 | policy=-0.012 | value=3.252 | entropy=1.161 (coef=0.0372) | adv: μ=-0.000 σ=1.000
+Update 2570 | return=  162.7 (n=6867) | loss=2.298 | policy=0.028 | value=4.540 | entropy=1.160 (coef=0.0372) | adv: μ=0.000 σ=1.000
+Update 2580 | return=  160.5 (n=6892) | loss=1.685 | policy=-0.067 | value=3.505 | entropy=1.063 (coef=0.0371) | adv: μ=-0.000 σ=1.000
+Update 2590 | return=  163.8 (n=6915) | loss=1.432 | policy=-0.056 | value=2.977 | entropy=1.161 (coef=0.0370) | adv: μ=0.000 σ=1.000
+Update 2600 | return=  174.4 (n=6937) | loss=1.683 | policy=-0.050 | value=3.466 | entropy=1.145 (coef=0.0370) | adv: μ=-0.000 σ=1.000
+    [EVAL STATS] mean=147.1 std=35.7 min=84.2 max=252.9
+[EVAL] Update 2600 | avg_return over 30 eps = 147.1
+Update 2610 | return=  166.4 (n=6959) | loss=1.430 | policy=-0.057 | value=2.974 | entropy=1.112 (coef=0.0370) | adv: μ=-0.000 σ=1.000
+Update 2620 | return=  164.5 (n=6980) | loss=1.660 | policy=-0.075 | value=3.471 | entropy=1.134 (coef=0.0369) | adv: μ=-0.000 σ=1.000
+Update 2630 | return=  180.1 (n=7001) | loss=1.473 | policy=-0.080 | value=3.106 | entropy=1.162 (coef=0.0369) | adv: μ=-0.000 σ=1.000
+Update 2640 | return=  176.7 (n=7021) | loss=1.603 | policy=-0.062 | value=3.331 | entropy=1.048 (coef=0.0368) | adv: μ=-0.000 σ=1.000
+Update 2650 | return=  178.2 (n=7045) | loss=1.919 | policy=-0.086 | value=4.010 | entropy=1.096 (coef=0.0367) | adv: μ=0.000 σ=1.000
+[EVAL] Update 2650 | avg_return over 30 eps = 173.7
+Update 2660 | return=  186.8 (n=7068) | loss=1.680 | policy=-0.026 | value=3.413 | entropy=0.984 (coef=0.0367) | adv: μ=0.000 σ=1.000
+Update 2670 | return=  195.5 (n=7092) | loss=1.632 | policy=-0.078 | value=3.420 | entropy=1.099 (coef=0.0367) | adv: μ=0.000 σ=1.000
+[DONE] Solved! rolling_mean=200.2 >= 200.0
+
+================================================================================
+📊 TRAINING SUMMARY
+================================================================================
+Training time:        1649.0s (27.5 minutes)
+Total updates:        2672
+Total episodes:       7096
+Best eval reward:     234.6
+Final mean (100 ep):  200.2 ± 119.2
+Solved:               ✅ YES
+Checkpoint:           checkpoints/a2c_2048_10000.pt
+================================================================================
+
+
+📊 Graphique sauvegardé : training_performance_a2c.png
+
+
+⚠️  Training interrupted by user (Ctrl+C)
+Checkpoint may have been saved during training.

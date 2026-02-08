@@ -1,0 +1,23 @@
+================================================================================
+🚀 A2C with GAE - Lunar Lander Training
+================================================================================
+Rollout steps:      2048
+Max updates:        10000
+GAE lambda:         0.95
+Entropy annealing:  0.05 → 0.005
+Gradient clipping:  0.5
+================================================================================
+
+
+============================================================
+🧪 Testing trained policy for 5 episodes
+============================================================
+
+
+
+❌ ERROR: RuntimeError: Error(s) in loading state_dict for PolicyNet:
+	size mismatch for net.0.weight: copying a param with shape torch.Size([256, 8]) from checkpoint, the shape in current model is torch.Size([512, 8]).
+	size mismatch for net.0.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for net.2.weight: copying a param with shape torch.Size([256, 256]) from checkpoint, the shape in current model is torch.Size([512, 512]).
+	size mismatch for net.2.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for net.4.weight: copying a param with shape torch.Size([4, 256]) from checkpoint, the shape in current model is torch.Size([4, 512]).
