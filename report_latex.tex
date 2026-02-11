@@ -1,0 +1,492 @@
+\documentclass[11pt,a4paper]{article}
+
+% =========================
+% Packages
+% =========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{siunitx}
+
+\geometry{margin=2.5cm}
+
+% =========================
+% Macros
+% =========================
+\newcommand{\algo}[1]{\textsc{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+
+% Code style
+\lstset{
+    backgroundcolor=\color{gray!10},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    language=Python,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red}
+}
+
+% Figures: placez vos images dans le dossier ./figures/ et référencez-les avec
+% \includegraphics{figures/<nom>.png}
+
+\begin{document}
+
+% =========================
+% PAGE DE GARDE
+% =========================
+% =========================
+% PAGE DE GARDE AMÉLIORÉE
+% =========================
+\begin{titlepage}
+    \centering
+
+    % Logo
+    \includegraphics[width=0.35\textwidth]{logo_universite.png}\par
+    \vspace{1.5cm}
+
+    % Université
+    {\scshape\LARGE Université Paris Dauphine -- PSL\par}
+    \vspace{0.3cm}
+    {\scshape\large Master IASD\par}
+
+    \vspace{2.5cm}
+
+    % Titre
+    {\huge\bfseries Apprentissage par renforcement sur \textbf{LunarLander-v3}\par}
+    \vspace{1cm}
+    {\Large Rapport de projet en Reinforcement Learning\par}
+
+    \vspace{3cm}
+
+    % Participants dans un tableau centré
+    \begin{tabular}{c}
+        \textbf{Participants} \\[0.5cm]
+        Amine \textsc{ROUIBI} \\
+        Thomas \textsc{SINAPI}
+    \end{tabular}
+
+    \vfill
+
+    % Date
+    {\large Année universitaire 2025--2026\par}
+    \vspace{0.3cm}
+    {\large \today\par}
+
+\end{titlepage}
+
+% =========================
+% SOMMAIRE
+% =========================
+\tableofcontents
+\newpage
+
+% =========================
+% CONTENU DU RAPPORT
+% =========================
+
+
+
+
+% ==========================================
+% Packages
+% ==========================================
+
+
+\begin{abstract}
+Ce projet étudie plusieurs approches d'\textit{apprentissage par renforcement} pour contrôler l'environnement \textbf{LunarLander-v3}.
+L'objectif est d'évaluer, par l'implémentation et l'expérimentation, ce qui permet (ou empêche) l'apprentissage stable d'une politique d'atterrissage.
+Nous comparons une approche \textit{value-based} (\algo{DQN}) à deux approches \textit{policy-based}/\textit{actor-critic} (\algo{REINFORCE} avec baseline et \algo{A2C} avec \textit{Generalized Advantage Estimation}).
+Le rapport se concentre sur (i) les éléments théoriques strictement nécessaires à la compréhension \emph{de chaque méthode} et (ii) l'analyse expérimentale via les courbes d'apprentissage, les scores d'évaluation et la stabilité des entraînements.
+\end{abstract}
+
+% Référence: fileciteturn0file0 % La structure s'inspire du rapport de référence fourni (sans en reprendre la partie "rappel global du cours").
+
+\section{Introduction}
+
+L'environnement \textbf{LunarLander} est un problème de contrôle de trajectoire où l'agent doit piloter des propulseurs afin d'atterrir sur une zone cible
+en limitant les impacts et la consommation de carburant.
+L'exploration est difficile car les épisodes peuvent être longs, les dynamiques sont non-linéaires et la variance des retours est élevée.
+Dans ce contexte, un objectif usuel est d'atteindre un score moyen supérieur à \SI{200} sur une fenêtre d'épisodes, seuil généralement associé à une résolution satisfaisante.%
+% Référence: citeturn3view1
+
+Le but de ce projet est double :
+d'une part, implémenter et entraîner plusieurs algorithmes sur \textbf{LunarLander-v3} ;
+d'autre part, analyser \emph{pourquoi} certaines variantes apprennent rapidement alors que d'autres stagnent, à partir des courbes d'apprentissage et d'indicateurs simples
+(score, moyenne mobile, taux de succès, entropie, pertes d'entraînement).
+
+\paragraph{Organisation du rapport.}
+Nous présentons d'abord l'environnement et le protocole expérimental, puis chaque méthode (théorie minimale et choix d'implémentation),
+avant une comparaison des performances et une discussion des points de stabilité.
+
+\section{Environnement et protocole expérimental}
+
+\subsection*{Description de LunarLander-v3}
+
+L'état est un vecteur continu de dimension 8, comprenant position/vitesse, angle/vitesse angulaire, et deux indicateurs de contact des jambes au sol ; l'agent choisit parmi 4 actions discrètes (ne rien faire, moteur principal, moteur latéral gauche, moteur latéral droit).%
+% Référence: citeturn3view1turn3view0
+
+La récompense est \textit{shaped} : elle encourage le rapprochement vers la zone d'atterrissage, pénalise l'éloignement, et ajoute des bonus/malus liés au crash, à l'arrêt stable, au contact des jambes, ainsi qu'à l'utilisation des moteurs.%
+% Référence: citeturn3view1
+Ce design rend l'apprentissage possible, mais introduit une forte variabilité intra-épisode (pénalités/bonus ponctuels, pénalité de carburant), ce qui complique les méthodes à gradient de politique.%
+% Référence: citeturn0search2turn0search9
+
+\subsection*{Mesures rapportées}
+
+Nous reportons systématiquement :
+(i) la récompense par épisode et sa moyenne mobile (typiquement fenêtre 50 ou 100),
+(ii) une mesure de succès (par exemple \% d'épisodes avec score $\ge 200$ sur une fenêtre glissante),
+(iii) des métriques de stabilité propres à certaines méthodes (par ex. entropie de la politique pour \algo{A2C}/\algo{REINFORCE}, perte TD pour \algo{DQN}).
+
+\subsection*{Protocole d'évaluation (à compléter avec vos chiffres)}
+Pour comparer les politiques issues des différents entraînements, nous effectuons une évaluation \textbf{déterministe}
+(sélection \emph{greedy}/\emph{argmax} de l'action) sur $N$ épisodes, sans rendu graphique.
+Nous reportons :
+\begin{itemize}
+    \item le score moyen et l'écart-type sur $N$ épisodes ;
+    \item le taux de succès (\% d'épisodes avec score $\ge 200$).
+\end{itemize}
+	extbf{À compléter :} $N=\,$\underline{\hspace{2cm}} épisodes ; seed(s)=\underline{\hspace{2cm}} ;
+seuil de succès=\underline{\hspace{4cm}}.
+
+\subsection*{Point d'attention : \texttt{terminated} vs \texttt{truncated}}
+
+Les API récentes de \textit{Gym}/\textit{Gymnasium} distinguent :
+\texttt{terminated} (fin réelle MDP : succès/échec) et \texttt{truncated} (fin imposée : limite de temps, contrainte externe).
+Cette distinction est critique pour les algorithmes qui \textbf{bootstrap} (valeur/critic), car le bootstrap est correct pour une troncature mais \emph{pas} pour une terminaison vraie.%
+% Référence: citeturn1search4turn1search6turn1search19turn1search1
+
+Dans la suite, nous explicitons, pour chaque méthode, comment sont traitées ces fins d'épisodes.
+
+\section{Approches évaluées}
+
+\subsection{\algo{DQN} : approximation de valeur (off-policy)}
+
+\subsubsection*{Idée théorique clé}
+
+\algo{DQN} approxime une fonction $Q_\theta(s,a)$ avec un réseau de neurones, puis apprend en minimisant une erreur de type \textit{Bellman} :
+\[
+y = r + \gamma \max_{a'} Q_{\theta^-}(s',a'), \qquad
+\mathcal{L}(\theta)=\mathbb{E}\left[\left(Q_\theta(s,a) - y\right)^2\right].
+\]
+L'utilisation d'un \textit{target network} $Q_{\theta^-}$ (paramètres figés puis recopiés périodiquement) réduit le problème de \textit{cible mouvante} et stabilise l'entraînement.%
+% Référence: citeturn0search1turn0search14
+
+\subsubsection*{Mécanismes de stabilisation utilisés}
+
+Deux mécanismes sont déterminants en pratique :
+\begin{itemize}
+    \item \textbf{Experience Replay} : les transitions $(s,a,r,s')$ sont stockées dans un buffer et ré-échantillonnées aléatoirement afin de casser les corrélations temporelles, d'améliorer l'efficacité échantillonnale et de rendre la descente de gradient plus stable.%
+    % Référence: citeturn1search2turn0search14
+    \item \textbf{Target Network} : la cible $y$ est calculée avec un réseau retardé, mis à jour périodiquement.%
+    % Référence: citeturn0search1turn0search14
+\end{itemize}
+
+\subsubsection*{Implémentation (résumé)}
+
+Le réseau Q est un MLP simple (8 $\rightarrow$ 128 $\rightarrow$ 128 $\rightarrow$ 4) ; l'exploration suit une stratégie $\epsilon$-greedy avec décroissance.
+
+\paragraph{À insérer : courbes d'apprentissage DQN}
+\begin{figure}[H]
+    \centering
+    % TODO: exporter une figure depuis logs/ et la copier dans figures/
+    % Exemple dispo dans le repo : logs/dqn_20260208_231202.png
+    \includegraphics[width=0.95\textwidth]{figures/dqn_graph.png}
+    \caption{\algo{DQN} sur LunarLander-v3 : score par épisode, moyenne mobile, décroissance de $\epsilon$, et indicateurs de stabilité (loss TD).}
+    \label{fig:dqn}
+\end{figure}
+
+\paragraph{Analyse des courbes d’apprentissage.}
+
+La Figure~\ref{fig:dqn} met en évidence un apprentissage efficace mais instable.
+
+\begin{itemize}
+    \item \textbf{Phase initiale.}
+    Les scores sont très négatifs et fortement dispersés, ce qui correspond à une exploration quasi-aléatoire.
+
+    \item \textbf{Phase d’apprentissage rapide.}
+    La moyenne mobile atteint rapidement la zone de résolution (200), montrant que l’agent apprend une politique efficace.
+
+    \item \textbf{Instabilité persistante.}
+    Malgré une moyenne élevée, la distribution des scores reste très étalée, avec des épisodes très négatifs.
+    Le taux de succès oscille entre 60\% et 90\%.
+\end{itemize}
+
+Cette instabilité s’explique par la stratégie d’exploration $\epsilon$-greedy et par la nature off-policy de DQN.
+Même après convergence apparente, certaines actions exploratoires peuvent provoquer des échecs sévères.
+
+\subsection{\algo{REINFORCE} avec baseline : policy gradient (on-policy)}
+
+\subsubsection*{Idée théorique clé}
+
+\algo{REINFORCE} optimise directement une politique stochastique $\pi_\theta(a\mid s)$ en maximisant
+\[
+J(\theta)=\mathbb{E}_{\tau\sim \pi_\theta}\left[\sum_t \gamma^t r_t\right],
+\]
+à l'aide de l'identité du gradient de politique :
+\[
+\nabla_\theta J(\theta) = \mathbb{E}\left[\sum_t \nabla_\theta \log \pi_\theta(a_t\mid s_t)\, G_t\right].
+\]
+L'estimateur est non biaisé mais de variance élevée, particulièrement lorsque les épisodes sont longs et que le signal de récompense est bruité.%
+% Référence: citeturn0search2turn0search9
+
+Pour réduire la variance, nous utilisons une \textbf{baseline} $b(s_t)$ (estimée par un critic $V_\phi(s_t)$) et un avantage :
+\[
+A_t = G_t - V_\phi(s_t),
+\]
+ce qui diminue la variance sans changer l'espérance du gradient.%
+% Référence: citeturn0search9
+
+\subsubsection*{Implémentation (résumé)}
+
+La politique est modélisée par un MLP produisant des logits sur les 4 actions ; une baseline $V_\phi$ est apprise par régression sur les retours.
+Une régularisation d'entropie est ajoutée pour éviter une convergence prématurée vers une politique déterministe.
+\begin{figure}[H]
+    \centering
+    % TODO: copier une figure de 0.REINFORCE/png/ dans figures/
+    % Exemple dispo : 0.REINFORCE/png/reinforce_maxEpisodes_10000_hiddenSize_256.png
+    \includegraphics[width=0.95\textwidth]{figures/reinforce_256.png}
+    \caption{REINFORCE (+ baseline) sur LunarLander-v3 : évolution du score, entropie, distribution des scores, taux de succès.}
+    \label{fig:reinforce}
+\end{figure}
+
+
+\paragraph{Analyse des courbes d’apprentissage.}
+
+La Figure~\ref{fig:reinforce} montre l’évolution des performances de REINFORCE au cours de l’entraînement.
+
+On distingue trois phases principales :
+
+\begin{itemize}
+    \item \textbf{Phase initiale (0–1000 épisodes).}
+    Les scores sont fortement négatifs et très variables, ce qui correspond à une politique quasi-aléatoire.
+    L’entropie est élevée (autour de 1.3), indiquant une exploration importante.
+
+    \item \textbf{Phase d’amélioration progressive (1000–4000 épisodes).}
+    La moyenne mobile augmente progressivement et atteint des scores positifs.
+    L’entropie diminue lentement, signe que la politique devient plus déterministe.
+
+    \item \textbf{Phase finale.}
+    Le taux de succès augmente brusquement en fin d’entraînement pour atteindre environ 78\%.
+    Cependant, la distribution des scores reste très étalée, avec encore de nombreux épisodes négatifs.
+\end{itemize}
+
+La moyenne globale des scores reste relativement faible (environ 58), ce qui confirme que REINFORCE parvient à apprendre une politique meilleure que le hasard, mais reste instable et loin d’une politique optimale.
+Cela illustre la forte variance du gradient dans les méthodes de policy gradient pures.
+
+Dans nos essais (Figure~\ref{fig:reinforce}), \algo{REINFORCE} améliore légèrement la récompense moyenne par rapport à une politique aléatoire,
+mais reste nettement sous le seuil de résolution : le taux de succès demeure nul et la variance reste élevée.
+
+Deux raisons dominantes expliquent cet échec pratique sur LunarLander :
+(i) la variance du gradient est importante même avec baseline, car les épisodes contiennent de nombreux événements aléatoires (crash, contacts, corrections fines),
+(ii) l'algorithme est \textit{on-policy} : chaque amélioration nécessite beaucoup de trajectoires fraîches, ce qui rend l'apprentissage lent dans un environnement de contrôle continu.
+Ces limites motivent l'utilisation d'algorithmes actor-critic plus stables (A2C/GAE), qui exploitent le bootstrap et des estimateurs d'avantage moins bruités.%
+% Référence: citeturn2search3turn0search9
+
+\subsection{\algo{A2C} avec \textit{GAE} : actor-critic (on-policy, bootstrap)}
+
+\subsubsection*{Idée théorique clé}
+
+Les méthodes \textit{actor-critic} apprennent simultanément :
+\begin{itemize}
+    \item un \textbf{acteur} $\pi_\theta(a\mid s)$, optimisé par gradient de politique ;
+    \item un \textbf{critique} $V_\phi(s)$, entraîné pour approximer la valeur et réduire la variance du gradient.
+\end{itemize}
+
+L'acteur est mis à jour avec un avantage $\hat{A}_t$ au lieu du retour brut $G_t$ :
+\[
+\mathcal{L}_{\text{policy}}(\theta) = -\mathbb{E}\left[\log \pi_\theta(a_t\mid s_t)\,\hat{A}_t\right].
+\]
+
+Pour estimer $\hat{A}_t$ de façon plus stable, on utilise \textbf{Generalized Advantage Estimation (GAE)} :
+\[
+\hat{A}^{\text{GAE}(\gamma,\lambda)}_t
+= \sum_{l\ge 0} (\gamma\lambda)^l\,\delta_{t+l},
+\qquad \delta_t = r_t + \gamma V_\phi(s_{t+1}) - V_\phi(s_t),
+\]
+où $\lambda$ contrôle le compromis biais/variance.%
+% Référence: citeturn2search3turn2search0
+
+\algo{A2C} peut être vu comme une version synchrone d'\algo{A3C}, avec mises à jour en batch (plus simple à implémenter et souvent efficace).%
+% Référence: citeturn0search20turn2search1
+
+\subsubsection*{Implémentation (résumé)}
+
+Dans notre implémentation, l'entraînement alterne (i) collecte de rollouts, (ii) calcul de GAE, (iii) mise à jour conjointe acteur/critique.
+Nous utilisons également :
+\begin{itemize}
+    \item \textbf{annealing d'entropie} (coefficient diminué au cours du temps) pour passer d'une exploration forte à une politique plus déterministe ;
+    \item \textbf{gradient clipping} pour limiter les explosions de gradient ;
+    \item \textbf{gestion correcte de \texttt{terminated}/\texttt{truncated}} afin de booter correctement lorsque l'épisode est tronqué.%
+    % Référence: citeturn1search6turn1search4
+\end{itemize}
+
+\paragraph{À insérer : courbes d'apprentissage A2C}
+\begin{figure}[H]
+    \centering
+    % TODO: copier une figure de png/ (ex: training_performance_a2c_384.png) dans figures/
+    \includegraphics[width=0.95\textwidth]{figures/a2c_384.png}
+    \caption{A2C + GAE sur LunarLander-v3 : progression des scores, entropie, distribution et taux de succès.}
+    \label{fig:a2c}
+\end{figure}
+
+\paragraph{Analyse des courbes d’apprentissage.}
+
+La Figure~\ref{fig:a2c} montre les performances de A2C avec GAE.
+
+On observe une dynamique d’apprentissage plus stable que pour REINFORCE :
+
+\begin{itemize}
+    \item \textbf{Apprentissage rapide.}
+    Dès les premiers milliers d’épisodes, la moyenne mobile devient positive, indiquant une amélioration rapide de la politique.
+
+    \item \textbf{Progression régulière.}
+    Le score moyen augmente progressivement jusqu’à dépasser la zone de résolution (200).
+    L’entropie diminue de manière continue, ce qui montre une transition progressive de l’exploration vers l’exploitation.
+
+    \item \textbf{Stabilisation finale.}
+    Le taux de succès atteint environ 80\% en fin d’entraînement.
+    La distribution des scores est centrée autour de valeurs positives, avec moins d’épisodes catastrophiques que pour REINFORCE.
+\end{itemize}
+
+Ces résultats confirment que l’introduction d’un critique et de GAE permet de réduire la variance du gradient
+et d’obtenir un apprentissage plus stable et plus efficace.
+
+\subsubsection*{Ce qui marche / ce qui marche moins (analyse)}
+
+Les courbes (Figure~\ref{fig:a2c}) montrent une dynamique d'apprentissage plus robuste que \algo{REINFORCE} :
+le score moyen augmente régulièrement, l'entropie décroît (politique moins aléatoire), et le taux de succès progresse jusqu'à des valeurs élevées.
+
+En pratique, deux facteurs ont eu un impact majeur sur la réussite :
+\begin{itemize}
+    \item \textbf{Bootstrap correct en fin d'épisode} : traiter toutes les fins comme terminales (c.-à-d. $V(s_{t+1})=0$) en cas de troncature casse l'estimation de valeur,
+    ce qui dégrade fortement l'update acteur/critique ; la correction \texttt{terminated} vs \texttt{truncated} rétablit un signal d'avantage cohérent.%
+    % Référence: citeturn1search6turn1search19
+    \item \textbf{Compromis exploration/convergence} : l'annealing d'entropie évite de rester bloqué dans une exploration permanente tout en limitant la convergence trop rapide vers une politique fragile.
+\end{itemize}
+
+Cette méthode est toutefois sensible aux hyperparamètres (taux d'apprentissage policy/value, coefficients de perte, $\lambda$ de GAE) :
+des choix agressifs peuvent entraîner des oscillations de performance et nécessitent typiquement un mécanisme de sauvegarde du \textit{best checkpoint}.
+
+\section{Analyse comparative}
+
+\subsection*{Synthèse des observations}
+
+\begin{itemize}
+    \item \algo{DQN} : efficace sur LunarLander grâce à l'ordre de grandeur des récompenses (shaping) et à la discrétisation des actions.
+    Les stabilisateurs (replay/target) sont essentiels ; la trajectoire d'apprentissage reste toutefois sensible au calendrier d'exploration.%
+    % Référence: citeturn0search1turn1search2
+    \item \algo{REINFORCE} (+ baseline) : améliore la politique mais reste loin du seuil de résolution dans nos essais ; la variance du gradient reste un frein majeur, même avec baseline.%
+    % Référence: citeturn0search2turn0search9
+    \item \algo{A2C} + GAE : le meilleur compromis observé entre stabilité et performance ; l'agent peut atteindre des performances de résolution,
+    à condition de respecter rigoureusement la sémantique \texttt{terminated}/\texttt{truncated} et de maîtriser le compromis exploration/convergence (entropie).%
+    % Référence: citeturn2search3turn1search6turn2search1
+\end{itemize}
+
+\subsection*{Configuration d'entraînement utilisée (résumé)}
+
+Le Tableau~\ref{tab:hparams} synthétise les hyperparamètres principaux utilisés dans nos implémentations.
+Il sert de référence pour interpréter les différences de dynamique d'apprentissage entre méthodes (stabilité, vitesse de convergence, variance).
+
+\begin{table}[H]
+\caption{Hyperparamètres principaux (valeurs typiques de nos runs).}
+\label{tab:hparams}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Hyperparamètre & DQN & REINFORCE (+ baseline) & A2C + GAE \\
+\midrule
+$\gamma$ & 0.99 & 0.99 & 0.99 \\
+Réseau (hidden) & 128 & 128 & 384--512 \\
+Taux d'apprentissage & $10^{-3}$ & $3\cdot 10^{-4}$ (policy), $10^{-3}$ (value) & $5\cdot 10^{-4}$ (policy), $10^{-3}$ (value) \\
+Exploration & $\epsilon$-greedy & entropie ($0.05$) & entropie (annealing $0.05 \rightarrow 0.005$) \\
+Batch / rollout & batch 64 & épisode complet & rollout 2048 pas \\
+Stabilisation & replay + target & baseline + clipping & GAE + clipping + normalisation obs \\
+Critère ``solved'' & score $\ge 200$ & score $\ge 200$ & moyenne (100) $\ge 200$ (early stop) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Table de comparaison}
+
+\begin{table}[H]
+\centering
+\caption{Comparaison qualitative des méthodes sur LunarLander-v3 (exemples basés sur nos runs).}
+\label{tab:compare}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Méthode & Atteint $\ge 200$ ? & Stabilité & Sensibilité hyperparamètres \\
+\midrule
+DQN (replay + target) & Oui (selon seed/epsilon) & Moyenne & Forte (exploration) \\
+REINFORCE (+ baseline) & Non & Faible & Moyenne \\
+A2C + GAE & Oui & Bonne & Forte (lr, entropie, $\lambda$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Classement des checkpoints (à renseigner après vos évaluations)}
+Cette sous-section sert à synthétiser le \textbf{meilleur checkpoint} par méthode et le \textbf{meilleur global}.
+Les checkpoints sont stockés dans \file{checkpoints/} (et pour certaines variantes dans \file{0.REINFORCE/} et \file{1.A2C/}).
+
+\paragraph{À insérer : top-3 global}
+\begin{itemize}
+    \item \textbf{\#1} \underline{\hspace{7cm}} : score moyen \underline{\hspace{2cm}} (succès \underline{\hspace{1.5cm}}\%).
+    \item \textbf{\#2} \underline{\hspace{7cm}} : score moyen \underline{\hspace{2cm}} (succès \underline{\hspace{1.5cm}}\%).
+    \item \textbf{\#3} \underline{\hspace{7cm}} : score moyen \underline{\hspace{2cm}} (succès \underline{\hspace{1.5cm}}\%).
+\end{itemize}
+
+\paragraph{À insérer : tableau récapitulatif}
+\begin{table}[H]
+\centering
+\caption{Résumé des meilleurs checkpoints (à compléter).}
+\label{tab:best_ckpts}
+\begin{tabular}{@{}l l c c c@{}}
+	oprule
+Méthode & Checkpoint & Mean & Std & Succès (\%) \\
+\midrule
+\algo{DQN} & \underline{\hspace{5cm}} & \underline{\hspace{1.2cm}} & \underline{\hspace{1.2cm}} & \underline{\hspace{1.2cm}} \\
+\algo{REINFORCE} (+ baseline) & \underline{\hspace{5cm}} & \underline{\hspace{1.2cm}} & \underline{\hspace{1.2cm}} & \underline{\hspace{1.2cm}} \\
+\algo{A2C} + GAE & \underline{\hspace{5cm}} & \underline{\hspace{1.2cm}} & \underline{\hspace{1.2cm}} & \underline{\hspace{1.2cm}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Limites et points à améliorer}
+
+Premièrement, l'environnement LunarLander comporte des subtilités connues (incohérences d'unités, détails physiques), pouvant affecter la reproductibilité et la lecture des variables d'état.%
+% Référence: citeturn3view0
+Deuxièmement, les algorithmes testés restent sensibles au \textit{seed} et aux choix d'hyperparamètres ; une comparaison stricte devrait idéalement être faite sur plusieurs seeds et avec un protocole d'évaluation standardisé.
+
+En perspectives, des extensions classiques pourraient améliorer la robustesse :
+\textit{Double DQN}, \textit{Dueling Networks} ou \textit{Prioritized Experience Replay} côté value-based ; et des variantes plus robustes côté actor-critic (par ex. \algo{PPO} avec GAE).%
+% Référence: citeturn1academia32turn2search3
+
+\section{Conclusion}
+
+Sur LunarLander-v3, nos expérimentations montrent qu'une implémentation soigneuse prime autant que le choix de l'algorithme.
+\algo{DQN} peut atteindre de bonnes performances sur cet espace d'actions discret, mais dépend fortement des mécanismes de stabilisation (replay/target) et du calendrier d'exploration.
+\algo{REINFORCE}, même avec baseline, reste pénalisé par la variance et l'inefficacité échantillonnale.
+Enfin, \algo{A2C} avec GAE se révèle particulièrement robuste, à condition de gérer correctement le bootstrap en fin d'épisode (distinction \texttt{terminated}/\texttt{truncated}) et d'assurer une transition progressive de l'exploration vers l'exploitation.
+
+\begin{thebibliography}{9}
+
+\bibitem{gymlibrarydocs}
+Gym Documentation (gymlibrary).
+\newblock \textit{Lunar Lander (Box2D): reward shaping et seuil ``Solved''}.
+\newblock Documentation technique, consultée en 2026.
+% Référence: citeturn3view1
+
+\end{thebibliography}
+
+\end{document}

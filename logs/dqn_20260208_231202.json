@@ -1,0 +1,19 @@
+{
+  "env_id": "LunarLander-v3",
+  "seed": 42,
+  "n_episodes": 2000,
+  "max_steps": 1000,
+  "gamma": 0.99,
+  "learning_rate": 0.001,
+  "epsilon_start": 1.0,
+  "epsilon_min": 0.01,
+  "epsilon_decay": 0.995,
+  "batch_size": 64,
+  "memory_size": 10000,
+  "target_update_freq": 10,
+  "hidden_size": 128,
+  "save_dir": "checkpoints",
+  "save_name": "dqn_lunar_lander.pth",
+  "log_dir": "logs",
+  "log_every": 50
+}
