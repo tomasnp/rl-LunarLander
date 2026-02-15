@@ -2,15 +2,7 @@
 
 Ce dépôt regroupe trois approches d'apprentissage par renforcement sur `LunarLander-v3`.
 
-## Vidéo
-
-<video controls width="100%">
-    <source src="./visual.evaluation.mp4" type="video/mp4" />
-    Votre navigateur ne supporte pas la lecture de vidéos via la balise HTML <code>&lt;video&gt;</code>.
-    <a href="./visual.evaluation.mp4">Télécharger la vidéo</a>.
-</video>
-
-## Organisation (rendu)
+## Organisation
 
 - `0.REINFORCE/` : méthode REINFORCE (+ baseline)
 - `1.A2C/` : méthode A2C (+ GAE)
