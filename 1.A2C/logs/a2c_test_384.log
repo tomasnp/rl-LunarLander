@@ -1,0 +1,131 @@
+================================================================================
+🎯 A2C BASELINE - Configuration du Run Réussi
+================================================================================
+Hidden size: 384
+LR policy: 0.0005
+LR value: 0.001
+Entropy final: 0.005
+Eval episodes: 30
+
+================================================================================
+
+
+============================================================
+Test de la politique sur 100 épisodes
+============================================================
+
+Politique chargée : checkpoints/a2c_r_2048_u_10000_h_384.pt
+
+Épisode  1/100 | Retour :  216.49 | Pas : 637
+Épisode  2/100 | Retour :  198.83 | Pas : 225
+Épisode  3/100 | Retour :  265.99 | Pas : 187
+Épisode  4/100 | Retour :  252.52 | Pas : 239
+Épisode  5/100 | Retour :  139.37 | Pas : 1000
+Épisode  6/100 | Retour :  212.11 | Pas : 920
+Épisode  7/100 | Retour :  267.63 | Pas : 188
+Épisode  8/100 | Retour :  129.44 | Pas : 1000
+Épisode  9/100 | Retour :   28.81 | Pas : 152
+Épisode 10/100 | Retour :    4.03 | Pas : 119
+Épisode 11/100 | Retour :  263.76 | Pas : 192
+Épisode 12/100 | Retour :  230.57 | Pas : 194
+Épisode 13/100 | Retour :  193.22 | Pas : 359
+Épisode 14/100 | Retour :  227.68 | Pas : 643
+Épisode 15/100 | Retour :  211.62 | Pas : 215
+Épisode 16/100 | Retour :  284.42 | Pas : 224
+Épisode 17/100 | Retour :  263.60 | Pas : 191
+Épisode 18/100 | Retour :  266.65 | Pas : 188
+Épisode 19/100 | Retour :  257.29 | Pas : 211
+Épisode 20/100 | Retour :  245.35 | Pas : 226
+Épisode 21/100 | Retour :  193.48 | Pas : 246
+Épisode 22/100 | Retour :   -0.77 | Pas : 119
+Épisode 23/100 | Retour :  264.49 | Pas : 192
+Épisode 24/100 | Retour :   12.60 | Pas : 200
+Épisode 25/100 | Retour :  220.85 | Pas : 226
+Épisode 26/100 | Retour :  269.09 | Pas : 193
+Épisode 27/100 | Retour :  246.45 | Pas : 202
+Épisode 28/100 | Retour :   18.73 | Pas : 160
+Épisode 29/100 | Retour :   22.40 | Pas : 151
+Épisode 30/100 | Retour :  279.13 | Pas : 173
+Épisode 31/100 | Retour :  264.51 | Pas : 224
+Épisode 32/100 | Retour :  262.46 | Pas : 166
+Épisode 33/100 | Retour :  286.46 | Pas : 218
+Épisode 34/100 | Retour :  287.90 | Pas : 211
+Épisode 35/100 | Retour :   -1.53 | Pas : 154
+Épisode 36/100 | Retour :    1.59 | Pas : 129
+Épisode 37/100 | Retour :  263.14 | Pas : 199
+Épisode 38/100 | Retour :  214.40 | Pas : 202
+Épisode 39/100 | Retour :  256.06 | Pas : 218
+Épisode 40/100 | Retour :  249.40 | Pas : 206
+Épisode 41/100 | Retour :  258.51 | Pas : 195
+Épisode 42/100 | Retour :  244.06 | Pas : 190
+Épisode 43/100 | Retour :  248.73 | Pas : 206
+Épisode 44/100 | Retour :  138.54 | Pas : 1000
+Épisode 45/100 | Retour :   -7.05 | Pas : 133
+Épisode 46/100 | Retour :  262.59 | Pas : 240
+Épisode 47/100 | Retour :  243.02 | Pas : 195
+Épisode 48/100 | Retour :  142.80 | Pas : 1000
+Épisode 49/100 | Retour :  242.58 | Pas : 223
+Épisode 50/100 | Retour :  158.93 | Pas : 1000
+Épisode 51/100 | Retour :  112.79 | Pas : 1000
+Épisode 52/100 | Retour :  147.19 | Pas : 1000
+Épisode 53/100 | Retour :   12.79 | Pas : 127
+Épisode 54/100 | Retour :  239.09 | Pas : 218
+Épisode 55/100 | Retour :  237.00 | Pas : 206
+Épisode 56/100 | Retour :  -27.80 | Pas : 255
+Épisode 57/100 | Retour :  267.93 | Pas : 205
+Épisode 58/100 | Retour :  200.66 | Pas : 226
+Épisode 59/100 | Retour :  215.77 | Pas : 798
+Épisode 60/100 | Retour :  250.49 | Pas : 209
+Épisode 61/100 | Retour :  248.11 | Pas : 224
+Épisode 62/100 | Retour :  212.39 | Pas : 209
+Épisode 63/100 | Retour :  264.68 | Pas : 196
+Épisode 64/100 | Retour :  263.41 | Pas : 184
+Épisode 65/100 | Retour :  262.66 | Pas : 191
+Épisode 66/100 | Retour :   38.83 | Pas : 138
+Épisode 67/100 | Retour :  256.86 | Pas : 254
+Épisode 68/100 | Retour :   41.31 | Pas : 128
+Épisode 69/100 | Retour :   34.98 | Pas : 120
+Épisode 70/100 | Retour :   -9.69 | Pas : 205
+Épisode 71/100 | Retour :  276.37 | Pas : 184
+Épisode 72/100 | Retour :  286.43 | Pas : 182
+Épisode 73/100 | Retour :    6.09 | Pas : 134
+Épisode 74/100 | Retour :    8.51 | Pas : 122
+Épisode 75/100 | Retour :  258.06 | Pas : 191
+Épisode 76/100 | Retour :  230.00 | Pas : 239
+Épisode 77/100 | Retour :  -12.99 | Pas : 176
+Épisode 78/100 | Retour :   22.15 | Pas : 140
+Épisode 79/100 | Retour :  257.57 | Pas : 228
+Épisode 80/100 | Retour :  251.16 | Pas : 215
+Épisode 81/100 | Retour :  273.93 | Pas : 237
+Épisode 82/100 | Retour :  255.47 | Pas : 227
+Épisode 83/100 | Retour :  227.28 | Pas : 175
+Épisode 84/100 | Retour :    0.21 | Pas : 113
+Épisode 85/100 | Retour :  233.63 | Pas : 210
+Épisode 86/100 | Retour :  212.82 | Pas : 263
+Épisode 87/100 | Retour :  258.75 | Pas : 226
+Épisode 88/100 | Retour :  234.73 | Pas : 229
+Épisode 89/100 | Retour :  291.18 | Pas : 176
+Épisode 90/100 | Retour :  247.70 | Pas : 203
+Épisode 91/100 | Retour :  301.98 | Pas : 181
+Épisode 92/100 | Retour :  -21.75 | Pas : 186
+Épisode 93/100 | Retour :  144.88 | Pas : 1000
+Épisode 94/100 | Retour :  -38.06 | Pas : 277
+Épisode 95/100 | Retour :  280.61 | Pas : 168
+Épisode 96/100 | Retour :  186.32 | Pas : 400
+Épisode 97/100 | Retour :  163.83 | Pas : 1000
+Épisode 98/100 | Retour :  237.05 | Pas : 180
+Épisode 99/100 | Retour :  144.00 | Pas : 1000
+Épisode 100/100 | Retour :  251.43 | Pas : 865
+
+============================================================
+Résultats :
+  Moyenne :  184.42 +/- 102.54
+  Min :      -38.06
+  Max :      301.98
+  Succès :  64/100 (>= 200)
+============================================================
+
+
+================================================================================
+✅ Entraînement terminé!
+================================================================================

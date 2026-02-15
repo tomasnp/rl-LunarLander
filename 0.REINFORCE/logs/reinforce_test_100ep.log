@@ -1,0 +1,144 @@
+================================================================================
+CONFIGURATION
+================================================================================
+  env_id                    = LunarLander-v3
+  seed                      = 42
+  gamma                     = 0.99
+  lr_policy                 = 0.0001
+  lr_value                  = 0.0005
+  entropy_coef              = 0.01
+  entropy_coef_decay        = 0.995
+  entropy_coef_min          = 0.001
+  value_coef                = 0.5
+  max_episodes              = 10000
+  eval_every                = 50
+  eval_episodes             = 10
+  hidden_size               = 256
+  grad_clip                 = 0.5
+  batch_episodes            = 4
+  save_dir                  = checkpoints
+  save_name                 = reinforce_maxEpisodes_10000_hiddenSize_256.pt
+  plot_name                 = reinforce_maxEpisodes_10000__hiddenSize_256.png
+  render_eval_human         = False
+  record_video              = False
+  video_dir                 = videos_record
+  solved_mean_reward        = 200.0
+  solved_window             = 100
+================================================================================
+
+
+============================================================
+Test de la politique sur 100 épisodes
+============================================================
+
+Politique chargée : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+
+Épisode  1/100 | Retour :  244.09 | Pas : 282
+Épisode  2/100 | Retour :  245.65 | Pas : 274
+Épisode  3/100 | Retour :  246.10 | Pas : 272
+Épisode  4/100 | Retour :  225.53 | Pas : 259
+Épisode  5/100 | Retour :  226.90 | Pas : 285
+Épisode  6/100 | Retour :  244.87 | Pas : 259
+Épisode  7/100 | Retour :  206.73 | Pas : 296
+Épisode  8/100 | Retour :  255.76 | Pas : 252
+Épisode  9/100 | Retour :  256.71 | Pas : 303
+Épisode 10/100 | Retour :  262.98 | Pas : 395
+Épisode 11/100 | Retour :  243.62 | Pas : 254
+Épisode 12/100 | Retour :  263.10 | Pas : 274
+Épisode 13/100 | Retour :  259.77 | Pas : 253
+Épisode 14/100 | Retour :  275.38 | Pas : 262
+Épisode 15/100 | Retour :  257.60 | Pas : 252
+Épisode 16/100 | Retour :  216.07 | Pas : 362
+Épisode 17/100 | Retour :  112.61 | Pas : 1000
+Épisode 18/100 | Retour :  243.59 | Pas : 261
+Épisode 19/100 | Retour :  291.01 | Pas : 294
+Épisode 20/100 | Retour :  278.72 | Pas : 298
+Épisode 21/100 | Retour :  237.00 | Pas : 282
+Épisode 22/100 | Retour :  256.70 | Pas : 322
+Épisode 23/100 | Retour :  286.69 | Pas : 299
+Épisode 24/100 | Retour :  281.42 | Pas : 270
+Épisode 25/100 | Retour :  261.71 | Pas : 265
+Épisode 26/100 | Retour :  266.17 | Pas : 285
+Épisode 27/100 | Retour :  246.79 | Pas : 290
+Épisode 28/100 | Retour :  275.55 | Pas : 287
+Épisode 29/100 | Retour :  251.08 | Pas : 290
+Épisode 30/100 | Retour :  278.37 | Pas : 279
+Épisode 31/100 | Retour :  161.00 | Pas : 1000
+Épisode 32/100 | Retour :  267.27 | Pas : 250
+Épisode 33/100 | Retour :  233.89 | Pas : 263
+Épisode 34/100 | Retour :  248.68 | Pas : 280
+Épisode 35/100 | Retour :  272.32 | Pas : 316
+Épisode 36/100 | Retour :  275.62 | Pas : 258
+Épisode 37/100 | Retour :  253.02 | Pas : 252
+Épisode 38/100 | Retour :  256.94 | Pas : 253
+Épisode 39/100 | Retour :  282.58 | Pas : 275
+Épisode 40/100 | Retour :  227.05 | Pas : 274
+Épisode 41/100 | Retour :  281.57 | Pas : 276
+Épisode 42/100 | Retour :  219.56 | Pas : 297
+Épisode 43/100 | Retour :  288.53 | Pas : 315
+Épisode 44/100 | Retour :  292.70 | Pas : 316
+Épisode 45/100 | Retour :  143.93 | Pas : 1000
+Épisode 46/100 | Retour :   -2.51 | Pas : 205
+Épisode 47/100 | Retour :  258.81 | Pas : 301
+Épisode 48/100 | Retour :  296.66 | Pas : 285
+Épisode 49/100 | Retour :  271.40 | Pas : 291
+Épisode 50/100 | Retour :  277.95 | Pas : 262
+Épisode 51/100 | Retour :  220.04 | Pas : 284
+Épisode 52/100 | Retour :  237.17 | Pas : 663
+Épisode 53/100 | Retour :  233.87 | Pas : 287
+Épisode 54/100 | Retour :  267.41 | Pas : 301
+Épisode 55/100 | Retour :  246.10 | Pas : 314
+Épisode 56/100 | Retour :  236.70 | Pas : 276
+Épisode 57/100 | Retour :  257.42 | Pas : 306
+Épisode 58/100 | Retour :  266.37 | Pas : 299
+Épisode 59/100 | Retour :  214.56 | Pas : 270
+Épisode 60/100 | Retour :  279.74 | Pas : 322
+Épisode 61/100 | Retour :  247.24 | Pas : 264
+Épisode 62/100 | Retour :  265.07 | Pas : 300
+Épisode 63/100 | Retour :  242.00 | Pas : 286
+Épisode 64/100 | Retour :  231.20 | Pas : 326
+Épisode 65/100 | Retour :  243.15 | Pas : 285
+Épisode 66/100 | Retour :  257.39 | Pas : 276
+Épisode 67/100 | Retour :  285.17 | Pas : 266
+Épisode 68/100 | Retour :  289.51 | Pas : 281
+Épisode 69/100 | Retour :  265.72 | Pas : 363
+Épisode 70/100 | Retour :   -1.24 | Pas : 255
+Épisode 71/100 | Retour :  255.16 | Pas : 273
+Épisode 72/100 | Retour :  276.29 | Pas : 304
+Épisode 73/100 | Retour :  237.85 | Pas : 267
+Épisode 74/100 | Retour :  222.40 | Pas : 267
+Épisode 75/100 | Retour :  244.10 | Pas : 285
+Épisode 76/100 | Retour :  272.51 | Pas : 333
+Épisode 77/100 | Retour :  291.45 | Pas : 270
+Épisode 78/100 | Retour :  262.27 | Pas : 288
+Épisode 79/100 | Retour :  252.73 | Pas : 342
+Épisode 80/100 | Retour :  293.46 | Pas : 301
+Épisode 81/100 | Retour :  244.34 | Pas : 284
+Épisode 82/100 | Retour :  239.94 | Pas : 278
+Épisode 83/100 | Retour :  260.22 | Pas : 262
+Épisode 84/100 | Retour :  291.99 | Pas : 277
+Épisode 85/100 | Retour :  118.81 | Pas : 1000
+Épisode 86/100 | Retour :  226.59 | Pas : 263
+Épisode 87/100 | Retour :  242.33 | Pas : 270
+Épisode 88/100 | Retour :  226.78 | Pas : 294
+Épisode 89/100 | Retour :  272.71 | Pas : 299
+Épisode 90/100 | Retour :  279.66 | Pas : 290
+Épisode 91/100 | Retour :  238.68 | Pas : 263
+Épisode 92/100 | Retour :  260.30 | Pas : 287
+Épisode 93/100 | Retour :  288.04 | Pas : 274
+Épisode 94/100 | Retour :  255.75 | Pas : 283
+Épisode 95/100 | Retour :  286.44 | Pas : 303
+Épisode 96/100 | Retour :  230.94 | Pas : 457
+Épisode 97/100 | Retour :  269.20 | Pas : 293
+Épisode 98/100 | Retour :  131.28 | Pas : 1000
+Épisode 99/100 | Retour :  292.42 | Pas : 314
+Épisode 100/100 | Retour :  295.06 | Pas : 377
+
+============================================================
+Résultats :
+  Moyenne :  246.50 +/- 49.57
+  Min :       -2.51
+  Max :      296.66
+  Succès :  93/100 (>= 200)
+============================================================
+
