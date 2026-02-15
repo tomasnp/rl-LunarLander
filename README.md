@@ -2,6 +2,14 @@
 
 Ce dépôt regroupe trois approches d'apprentissage par renforcement sur `LunarLander-v3`.
 
+## Vidéo
+
+<video controls width="100%">
+    <source src="./visual.evaluation.mp4" type="video/mp4" />
+    Votre navigateur ne supporte pas la lecture de vidéos via la balise HTML <code>&lt;video&gt;</code>.
+    <a href="./visual.evaluation.mp4">Télécharger la vidéo</a>.
+</video>
+
 ## Organisation (rendu)
 
 - `0.REINFORCE/` : méthode REINFORCE (+ baseline)
@@ -16,8 +24,7 @@ Chaque dossier contient :
 
 ## Rapport
 
-Le rapport LaTeX est dans `report_latex.tex`.
-Les images que le rapport inclut sont dans `figures/`.
+Le rapport LaTeX est dans `Report_RL.pdf`.
 
 ## Notes
 

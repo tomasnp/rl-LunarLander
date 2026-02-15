@@ -414,19 +414,13 @@ Nous avons testé plusieurs réglages en ne modifiant qu'un hyperparamètre à l
     \item mise à jour du target network plus fréquente ;
     \item learning rate plus faible.
 \end{itemize}
-Dans la version finalisée du dépôt, trois runs longues (2000 épisodes) sont disponibles avec des dashboards PNG :
-\begin{itemize}
-    \item \file{dqn\_ep2000\_lr0.001\_epsd0.995\_buf10000\_tgt10\_hid128\_e2000\_1.png} (baseline) ;
-    \item \file{dqn\_ep2000\_lr0.001\_epsd0.997\_buf10000\_tgt10\_hid128\_e2000\_2.png} ($\epsilon$-decay plus lent) ;
-    \item \file{dqn\_ep2000\_lr0.001\_epsd0.995\_buf50000\_tgt10\_hid128\_e2000\_3.png} (replay buffer plus grand).
-\end{itemize}
 
-\paragraph{Courbes d'apprentissage DQN (dashboard)}
+\paragraph{Courbes d'apprentissage DQN}
 \begin{figure}[H]
     \centering
     % TODO: copier une figure DQN finale depuis 2.DQN/png/ vers ./figures/
     % Exemples (dossier source) : 2.DQN/png/dqn_ep2000_*.png
-    \includegraphics[width=0.95\textwidth]{figures/dqn_graph.png}
+    \includegraphics[width=0.95\textwidth]{figures/dqn_buf50000_3.png}
     \caption{\algo{DQN} sur LunarLander-v3 : score par épisode, moyenne mobile, décroissance de $\epsilon$, taux de succès et distribution des scores (dashboard).}
     \label{fig:dqn}
 \end{figure}
@@ -486,19 +480,28 @@ Le Tableau~\ref{tab:dqn_sweep} met en évidence trois conclusions simples :
     \item \textbf{Certains réglages peuvent échouer complètement.} La baseline (\#1) est négative en moyenne : cela illustre la sensibilité de DQN
     aux données disponibles dans le replay et à la stabilité de la cible TD.
 \end{itemize}
-Le run \emph{exploration visible} obtient aussi d'excellents résultats (94\% de succès), mais reste un peu plus variable que le meilleur sweep
-(eps min non nul).
-
+Le run \emph{exploration visible} obtient aussi d'excellents résultats (94\% de succès), mais reste un peu plus variable que le meilleur sweep.
+Pour visualiser explicitement l'évolution de $\epsilon$ sur ce run (et donc la différence avec les runs où $\epsilon$ tombe très vite à zéro),
+nous reportons son dashboard complet en Annexe~\ref{app:dqn_explo}.
 
 \section{Analyse comparative}
-
 \subsection*{Comparaison des meilleurs modèles}
 Pour rester lisible, on compare uniquement le \textbf{meilleur modèle} obtenu pour chaque méthode :
-\begin{itemize}
-    \item \textbf{DQN} : meilleur sweep (replay buffer 50k), $268.3 \pm 31.7$ sur 100 épisodes, \textbf{95\%} de succès (Tableau~\ref{tab:dqn_sweep}).
-    \item \textbf{REINFORCE (+ baseline)} : hidden=256, $243.5 \pm 53.7$ sur 100 épisodes, \textbf{89\%} de succès (Tableau~\ref{tab:reinforce_sweep}).
-    \item \textbf{A2C + GAE} : meilleur checkpoint sauvegardé (hidden=512) avec atteinte du critère ``Solved'' dans nos logs.
-\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Comparaison des meilleurs modèles par méthode (évaluation déterministe).}
+\label{tab:best_models_compare}
+\begin{tabular}{@{}l l c c l@{}}
+\toprule
+Méthode & Variante retenue & Mean eval & Succès (\%) & Référence \\
+\midrule
+\algo{DQN} & replay buffer 50k & $268.3 \pm 31.7$ (100 ep) & 95 & Tab.~\ref{tab:dqn_sweep} \\
+\algo{REINFORCE} (+ baseline) & hidden=256 & $243.5 \pm 53.7$ & 89 & Tab.~\ref{tab:reinforce_sweep} \\
+\algo{A2C}+GAE & meilleur checkpoint (hidden=512) & -- & -- & logs (critère ``Solved'') \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \paragraph{Ce qui fonctionne pour chaque méthode (et pourquoi).}
 \begin{itemize}
@@ -514,52 +517,9 @@ Pour rester lisible, on compare uniquement le \textbf{meilleur modèle} obtenu p
 Dans ce projet, DQN finit souvent avec le meilleur score moyen car il est \textbf{off-policy} : les mêmes transitions sont réutilisées de nombreuses fois
 via le replay buffer. Cette réutilisation améliore l'efficacité en données et consolide une bonne politique une fois que l'exploration est maîtrisée.
 
-\subsection*{Configuration d'entraînement utilisée (résumé)}
-
-Le Tableau~\ref{tab:hparams} synthétise les hyperparamètres principaux utilisés dans nos implémentations.
-Il sert de référence pour interpréter les différences de dynamique d'apprentissage entre méthodes (stabilité, vitesse de convergence, variance).
-
-\begin{table}[H]
-\caption{Hyperparamètres principaux (valeurs typiques de nos runs).}
-\label{tab:hparams}
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Hyperparamètre & DQN & REINFORCE (+ baseline) & A2C + GAE \\
-\midrule
-$\gamma$ & 0.99 & 0.99 & 0.99 \\
-Réseau (hidden) & 128 & 128 & 384--512 \\
-Taux d'apprentissage & $10^{-3}$ & $3\cdot 10^{-4}$ (policy), $10^{-3}$ (value) & $5\cdot 10^{-4}$ (policy), $10^{-3}$ (value) \\
-Exploration & $\epsilon$-greedy & entropie ($0.05$) & entropie (annealing $0.05 \rightarrow 0.005$) \\
-Batch / rollout & batch 64 & épisode complet & rollout 2048 pas \\
-Stabilisation & replay + target & baseline + clipping & GAE + clipping + normalisation obs \\
-Critère ``solved'' & score $\ge 200$ & score $\ge 200$ & moyenne (100) $\ge 200$ (early stop) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection*{Table de comparaison}
-
-\begin{table}[H]
-\centering
-\caption{Comparaison qualitative des méthodes sur LunarLander-v3 (exemples basés sur nos runs).}
-\label{tab:compare}
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Méthode & Atteint $\ge 200$ ? & Stabilité & Sensibilité hyperparamètres \\
-\midrule
-DQN (replay + target) & Oui (selon seed/epsilon) & Moyenne & Forte (exploration) \\
-REINFORCE (+ baseline) & Oui (en test déterministe) & Faible à moyenne & Moyenne \\
-A2C + GAE & Oui & Bonne & Forte (lr, entropie, $\lambda$) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
 \subsection*{Limites et points à améliorer}
 
-Premièrement, l'environnement LunarLander comporte des subtilités connues (incohérences d'unités, détails physiques), pouvant affecter la reproductibilité et la lecture des variables d'état.%
-% Référence: citeturn3view0
-Deuxièmement, les algorithmes testés restent sensibles au \textit{seed} et aux choix d'hyperparamètres ; une comparaison stricte devrait idéalement être faite sur plusieurs seeds et avec un protocole d'évaluation standardisé.
+Premièrement, l'environnement LunarLander comporte des subtilités connues (incohérences d'unités, détails physiques), pouvant affecter la reproductibilité et la lecture des variables d'état.Deuxièmement, les algorithmes testés restent sensibles au \textit{seed} et aux choix d'hyperparamètres ; une comparaison stricte devrait idéalement être faite sur plusieurs seeds et avec un protocole d'évaluation standardisé.
 
 En perspectives, des extensions classiques pourraient améliorer la robustesse :
 \textit{Double DQN}, \textit{Dueling Networks} ou \textit{Prioritized Experience Replay} côté value-based ; et des variantes plus robustes côté actor-critic (par ex. \algo{PPO} avec GAE).%
@@ -579,8 +539,19 @@ Enfin, \algo{A2C}+GAE offre le compromis le plus robuste dans nos runs : les mé
 Gym Documentation (gymlibrary).
 \newblock \textit{Lunar Lander (Box2D): reward shaping et seuil ``Solved''}.
 \newblock Documentation technique, consultée en 2026.
-% Référence: citeturn3view1
 
 \end{thebibliography}
+
+\appendix
+\section{Annexes}
+\subsection{DQN : run ``exploration visible''}
+\label{app:dqn_explo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/dqn_explo.png}
+    \caption{Dashboard du run \algo{DQN} ``exploration visible'' (progression des scores, moyenne mobile, $\epsilon$, taux de succès, distribution des retours).}
+    \label{fig:dqn_explo}
+\end{figure}
 
 \end{document}
