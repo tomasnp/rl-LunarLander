@@ -1,0 +1,3 @@
+*.ipynb
+2.DQN/logs/json/*
+2.DQN/logs/csv/*

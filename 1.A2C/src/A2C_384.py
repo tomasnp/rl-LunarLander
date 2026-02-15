@@ -6,7 +6,7 @@ A2C Baseline - Configuration EXACTE du run réussi (74.8% success)
 import sys
 sys.path.insert(0, '.')
 
-from A2C import Config, train, setup_logging
+from A2C import Config, train, setup_logging, test
 
 if __name__ == "__main__":
     # Setup logging
@@ -47,7 +47,8 @@ if __name__ == "__main__":
         print("="*80 + "\n")
 
         # Entraîner
-        history = train(cfg)
+        # history = train(cfg)
+        test(cfg, num_episodes=100, render=False)
 
         print("\n" + "="*80)
         print("✅ Entraînement terminé!")
