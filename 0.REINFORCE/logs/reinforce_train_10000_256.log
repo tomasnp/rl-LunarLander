@@ -1,0 +1,629 @@
+================================================================================
+CONFIGURATION
+================================================================================
+  env_id                    = LunarLander-v3
+  seed                      = 42
+  gamma                     = 0.99
+  lr_policy                 = 0.0001
+  lr_value                  = 0.0005
+  entropy_coef              = 0.01
+  entropy_coef_decay        = 0.995
+  entropy_coef_min          = 0.001
+  value_coef                = 0.5
+  max_episodes              = 10000
+  eval_every                = 50
+  eval_episodes             = 10
+  hidden_size               = 256
+  grad_clip                 = 0.5
+  batch_episodes            = 4
+  save_dir                  = checkpoints
+  save_name                 = reinforce_maxEpisodes_10000_hiddenSize_256.pt
+  plot_name                 = reinforce_maxEpisodes_10000__hiddenSize_256.png
+  render_eval_human         = False
+  record_video              = False
+  video_dir                 = videos_record
+  solved_mean_reward        = 200.0
+  solved_window             = 100
+================================================================================
+
+[INFO] Device : cpu
+Ep   10 | retour=  -124.2 | moy(100)= -250.2 | ent_coef=0.0095 | ent=1.351
+Ep   20 | retour=  -142.0 | moy(100)= -203.1 | ent_coef=0.0090 | ent=1.359
+Ep   30 | retour=   -95.3 | moy(100)= -178.6 | ent_coef=0.0086 | ent=1.354
+Ep   40 | retour=   -81.3 | moy(100)= -170.2 | ent_coef=0.0082 | ent=1.350
+Ep   50 | retour=  -226.5 | moy(100)= -159.6 | ent_coef=0.0078 | ent=1.336
+[EVAL] Ep   50 | retour moyen (10 ep) = -622.9
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep   60 | retour=  -312.2 | moy(100)= -166.4 | ent_coef=0.0074 | ent=1.344
+Ep   70 | retour=  -331.5 | moy(100)= -162.8 | ent_coef=0.0070 | ent=1.336
+Ep   80 | retour=   -69.2 | moy(100)= -163.1 | ent_coef=0.0067 | ent=1.312
+Ep   90 | retour=  -324.9 | moy(100)= -175.9 | ent_coef=0.0064 | ent=1.286
+Ep  100 | retour=  -327.3 | moy(100)= -175.9 | ent_coef=0.0061 | ent=1.249
+[EVAL] Ep  100 | retour moyen (10 ep) = -638.8
+Ep  110 | retour=  -230.8 | moy(100)= -165.9 | ent_coef=0.0058 | ent=1.257
+Ep  120 | retour=  -301.1 | moy(100)= -171.8 | ent_coef=0.0055 | ent=1.240
+Ep  130 | retour=  -156.2 | moy(100)= -173.6 | ent_coef=0.0052 | ent=1.207
+Ep  140 | retour=  -290.0 | moy(100)= -183.6 | ent_coef=0.0050 | ent=1.251
+Ep  150 | retour=     0.2 | moy(100)= -187.7 | ent_coef=0.0047 | ent=1.148
+[EVAL] Ep  150 | retour moyen (10 ep) = -699.9
+Ep  160 | retour=  -266.4 | moy(100)= -197.3 | ent_coef=0.0045 | ent=1.221
+Ep  170 | retour=   -25.8 | moy(100)= -196.2 | ent_coef=0.0043 | ent=1.197
+Ep  180 | retour=  -158.9 | moy(100)= -193.4 | ent_coef=0.0041 | ent=1.249
+Ep  190 | retour=  -106.5 | moy(100)= -184.5 | ent_coef=0.0039 | ent=1.206
+Ep  200 | retour=     0.2 | moy(100)= -176.7 | ent_coef=0.0037 | ent=1.269
+[EVAL] Ep  200 | retour moyen (10 ep) = -688.0
+Ep  210 | retour=   -16.0 | moy(100)= -172.5 | ent_coef=0.0035 | ent=1.235
+Ep  220 | retour=   -79.7 | moy(100)= -158.6 | ent_coef=0.0033 | ent=1.209
+Ep  230 | retour=  -234.3 | moy(100)= -159.9 | ent_coef=0.0032 | ent=1.244
+Ep  240 | retour=   -63.5 | moy(100)= -145.8 | ent_coef=0.0030 | ent=1.199
+Ep  250 | retour=  -125.3 | moy(100)= -149.3 | ent_coef=0.0029 | ent=1.223
+[EVAL] Ep  250 | retour moyen (10 ep) = -488.4
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  260 | retour=   -22.9 | moy(100)= -138.7 | ent_coef=0.0027 | ent=1.184
+Ep  270 | retour=   -52.2 | moy(100)= -139.8 | ent_coef=0.0026 | ent=1.227
+Ep  280 | retour=     6.6 | moy(100)= -138.2 | ent_coef=0.0025 | ent=1.159
+Ep  290 | retour=  -255.6 | moy(100)= -133.7 | ent_coef=0.0023 | ent=1.244
+Ep  300 | retour=   -22.6 | moy(100)= -134.5 | ent_coef=0.0022 | ent=1.207
+[EVAL] Ep  300 | retour moyen (10 ep) = -1524.9
+Ep  310 | retour=  -173.8 | moy(100)= -131.4 | ent_coef=0.0021 | ent=1.222
+Ep  320 | retour=  -135.7 | moy(100)= -132.7 | ent_coef=0.0020 | ent=1.226
+Ep  330 | retour=  -208.0 | moy(100)= -125.0 | ent_coef=0.0019 | ent=1.227
+Ep  340 | retour=   -61.8 | moy(100)= -123.5 | ent_coef=0.0018 | ent=1.205
+Ep  350 | retour=  -111.2 | moy(100)= -115.5 | ent_coef=0.0017 | ent=1.175
+[EVAL] Ep  350 | retour moyen (10 ep) = -323.2
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  360 | retour=  -154.8 | moy(100)= -111.0 | ent_coef=0.0016 | ent=1.197
+Ep  370 | retour=     9.6 | moy(100)= -102.2 | ent_coef=0.0016 | ent=1.086
+Ep  380 | retour=   -43.2 | moy(100)=  -99.2 | ent_coef=0.0015 | ent=1.091
+Ep  390 | retour=   -66.6 | moy(100)=  -93.1 | ent_coef=0.0014 | ent=1.191
+Ep  400 | retour=  -178.7 | moy(100)=  -94.7 | ent_coef=0.0013 | ent=1.151
+[EVAL] Ep  400 | retour moyen (10 ep) = -314.2
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  410 | retour=   -62.2 | moy(100)= -101.1 | ent_coef=0.0013 | ent=1.169
+Ep  420 | retour=  -234.4 | moy(100)= -107.0 | ent_coef=0.0012 | ent=1.075
+Ep  430 | retour=  -304.8 | moy(100)= -112.3 | ent_coef=0.0012 | ent=1.100
+Ep  440 | retour=  -220.1 | moy(100)= -120.5 | ent_coef=0.0011 | ent=1.139
+Ep  450 | retour=   -40.4 | moy(100)= -122.9 | ent_coef=0.0010 | ent=0.991
+[EVAL] Ep  450 | retour moyen (10 ep) = -306.9
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  460 | retour=   -90.5 | moy(100)= -120.6 | ent_coef=0.0010 | ent=1.129
+Ep  470 | retour=  -299.9 | moy(100)= -134.7 | ent_coef=0.0010 | ent=1.125
+Ep  480 | retour=  -293.9 | moy(100)= -145.2 | ent_coef=0.0010 | ent=1.110
+Ep  490 | retour=  -204.5 | moy(100)= -153.9 | ent_coef=0.0010 | ent=1.045
+Ep  500 | retour=  -300.5 | moy(100)= -160.3 | ent_coef=0.0010 | ent=1.054
+[EVAL] Ep  500 | retour moyen (10 ep) = -322.8
+Ep  510 | retour=  -223.8 | moy(100)= -166.2 | ent_coef=0.0010 | ent=1.067
+Ep  520 | retour=  -180.7 | moy(100)= -171.0 | ent_coef=0.0010 | ent=1.150
+Ep  530 | retour=  -128.4 | moy(100)= -178.4 | ent_coef=0.0010 | ent=1.090
+Ep  540 | retour=  -291.4 | moy(100)= -178.2 | ent_coef=0.0010 | ent=1.046
+Ep  550 | retour=  -233.7 | moy(100)= -178.3 | ent_coef=0.0010 | ent=1.018
+[EVAL] Ep  550 | retour moyen (10 ep) = -263.4
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  560 | retour=  -200.8 | moy(100)= -178.3 | ent_coef=0.0010 | ent=1.081
+Ep  570 | retour=    -9.4 | moy(100)= -170.1 | ent_coef=0.0010 | ent=1.067
+Ep  580 | retour=   -74.1 | moy(100)= -167.6 | ent_coef=0.0010 | ent=1.090
+Ep  590 | retour=  -323.0 | moy(100)= -161.9 | ent_coef=0.0010 | ent=1.055
+Ep  600 | retour=     0.0 | moy(100)= -157.3 | ent_coef=0.0010 | ent=1.095
+[EVAL] Ep  600 | retour moyen (10 ep) = -220.7
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  610 | retour=  -188.5 | moy(100)= -153.0 | ent_coef=0.0010 | ent=1.077
+Ep  620 | retour=  -377.6 | moy(100)= -150.7 | ent_coef=0.0010 | ent=1.034
+Ep  630 | retour=  -228.8 | moy(100)= -145.9 | ent_coef=0.0010 | ent=1.078
+Ep  640 | retour=  -257.8 | moy(100)= -145.2 | ent_coef=0.0010 | ent=1.081
+Ep  650 | retour=  -166.7 | moy(100)= -147.0 | ent_coef=0.0010 | ent=1.043
+[EVAL] Ep  650 | retour moyen (10 ep) = -209.5
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  660 | retour=   -23.5 | moy(100)= -146.5 | ent_coef=0.0010 | ent=1.069
+Ep  670 | retour=   -41.8 | moy(100)= -149.4 | ent_coef=0.0010 | ent=1.065
+Ep  680 | retour=    12.2 | moy(100)= -140.8 | ent_coef=0.0010 | ent=0.963
+Ep  690 | retour=   -64.9 | moy(100)= -140.9 | ent_coef=0.0010 | ent=1.070
+Ep  700 | retour=  -132.6 | moy(100)= -134.8 | ent_coef=0.0010 | ent=1.066
+[EVAL] Ep  700 | retour moyen (10 ep) = -172.2
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  710 | retour=   -25.1 | moy(100)= -124.7 | ent_coef=0.0010 | ent=1.093
+Ep  720 | retour=   -29.4 | moy(100)= -115.5 | ent_coef=0.0010 | ent=1.095
+Ep  730 | retour=   -52.2 | moy(100)= -104.2 | ent_coef=0.0010 | ent=1.005
+Ep  740 | retour=   -60.4 | moy(100)=  -90.4 | ent_coef=0.0010 | ent=0.988
+Ep  750 | retour=   -38.7 | moy(100)=  -80.0 | ent_coef=0.0010 | ent=1.065
+[EVAL] Ep  750 | retour moyen (10 ep) = -156.6
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  760 | retour=   -42.9 | moy(100)=  -72.3 | ent_coef=0.0010 | ent=1.112
+Ep  770 | retour=    23.5 | moy(100)=  -62.2 | ent_coef=0.0010 | ent=1.100
+Ep  780 | retour=   -25.0 | moy(100)=  -55.1 | ent_coef=0.0010 | ent=1.103
+Ep  790 | retour=    42.0 | moy(100)=  -49.4 | ent_coef=0.0010 | ent=0.974
+Ep  800 | retour=    -5.0 | moy(100)=  -43.8 | ent_coef=0.0010 | ent=0.994
+[EVAL] Ep  800 | retour moyen (10 ep) = -171.7
+Ep  810 | retour=    23.3 | moy(100)=  -37.1 | ent_coef=0.0010 | ent=1.113
+Ep  820 | retour=    60.9 | moy(100)=  -33.2 | ent_coef=0.0010 | ent=1.126
+Ep  830 | retour=    -7.5 | moy(100)=  -28.9 | ent_coef=0.0010 | ent=1.023
+Ep  840 | retour=    10.1 | moy(100)=  -26.2 | ent_coef=0.0010 | ent=1.051
+Ep  850 | retour=    19.1 | moy(100)=  -22.8 | ent_coef=0.0010 | ent=1.156
+[EVAL] Ep  850 | retour moyen (10 ep) = 13.5
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep  860 | retour=    22.8 | moy(100)=  -17.9 | ent_coef=0.0010 | ent=1.130
+Ep  870 | retour=    -2.2 | moy(100)=  -12.9 | ent_coef=0.0010 | ent=1.138
+Ep  880 | retour=    36.5 | moy(100)=   -9.6 | ent_coef=0.0010 | ent=1.013
+Ep  890 | retour=    43.3 | moy(100)=   -2.1 | ent_coef=0.0010 | ent=1.149
+Ep  900 | retour=   -23.4 | moy(100)=   -3.7 | ent_coef=0.0010 | ent=1.032
+[EVAL] Ep  900 | retour moyen (10 ep) = 7.7
+Ep  910 | retour=    14.3 | moy(100)=   -4.7 | ent_coef=0.0010 | ent=0.966
+Ep  920 | retour=   -24.0 | moy(100)=   -4.5 | ent_coef=0.0010 | ent=1.029
+Ep  930 | retour=    34.9 | moy(100)=   -3.4 | ent_coef=0.0010 | ent=1.162
+Ep  940 | retour=    -7.5 | moy(100)=   -6.1 | ent_coef=0.0010 | ent=1.150
+Ep  950 | retour=    26.0 | moy(100)=   -3.2 | ent_coef=0.0010 | ent=1.148
+[EVAL] Ep  950 | retour moyen (10 ep) = -51.8
+Ep  960 | retour=   -46.2 | moy(100)=   -4.7 | ent_coef=0.0010 | ent=1.146
+Ep  970 | retour=    56.1 | moy(100)=   -6.4 | ent_coef=0.0010 | ent=1.026
+Ep  980 | retour=    19.9 | moy(100)=   -8.3 | ent_coef=0.0010 | ent=0.987
+Ep  990 | retour=   -50.3 | moy(100)=   -8.2 | ent_coef=0.0010 | ent=1.141
+Ep 1000 | retour=    60.8 | moy(100)=   -5.5 | ent_coef=0.0010 | ent=1.126
+[EVAL] Ep 1000 | retour moyen (10 ep) = -56.2
+Ep 1010 | retour=    23.4 | moy(100)=   -8.4 | ent_coef=0.0010 | ent=1.128
+Ep 1020 | retour=    36.6 | moy(100)=   -8.4 | ent_coef=0.0010 | ent=1.111
+Ep 1030 | retour=  -134.5 | moy(100)=  -13.4 | ent_coef=0.0010 | ent=1.099
+Ep 1040 | retour=  -109.4 | moy(100)=  -10.3 | ent_coef=0.0010 | ent=1.082
+Ep 1050 | retour=    54.7 | moy(100)=  -12.5 | ent_coef=0.0010 | ent=1.109
+[EVAL] Ep 1050 | retour moyen (10 ep) = -84.6
+Ep 1060 | retour=    -7.5 | moy(100)=  -13.6 | ent_coef=0.0010 | ent=1.109
+Ep 1070 | retour=   -16.1 | moy(100)=  -17.1 | ent_coef=0.0010 | ent=1.113
+Ep 1080 | retour=    45.9 | moy(100)=  -17.8 | ent_coef=0.0010 | ent=1.084
+Ep 1090 | retour=    59.3 | moy(100)=  -21.5 | ent_coef=0.0010 | ent=1.096
+Ep 1100 | retour=     6.9 | moy(100)=  -22.6 | ent_coef=0.0010 | ent=0.973
+[EVAL] Ep 1100 | retour moyen (10 ep) = -69.2
+Ep 1110 | retour=    27.5 | moy(100)=  -18.1 | ent_coef=0.0010 | ent=1.103
+Ep 1120 | retour=    49.2 | moy(100)=  -11.6 | ent_coef=0.0010 | ent=1.096
+Ep 1130 | retour=    59.9 | moy(100)=   -9.1 | ent_coef=0.0010 | ent=1.109
+Ep 1140 | retour=  -286.9 | moy(100)=  -10.8 | ent_coef=0.0010 | ent=1.017
+Ep 1150 | retour=    40.4 | moy(100)=  -12.5 | ent_coef=0.0010 | ent=1.095
+[EVAL] Ep 1150 | retour moyen (10 ep) = -121.7
+Ep 1160 | retour=    30.1 | moy(100)=   -8.5 | ent_coef=0.0010 | ent=0.866
+Ep 1170 | retour=   -51.6 | moy(100)=   -4.5 | ent_coef=0.0010 | ent=0.958
+Ep 1180 | retour=  -191.4 | moy(100)=   -0.9 | ent_coef=0.0010 | ent=0.920
+Ep 1190 | retour=   -60.3 | moy(100)=    2.2 | ent_coef=0.0010 | ent=0.922
+Ep 1200 | retour=   -84.0 | moy(100)=    4.4 | ent_coef=0.0010 | ent=1.036
+[EVAL] Ep 1200 | retour moyen (10 ep) = -83.0
+Ep 1210 | retour=    85.0 | moy(100)=    8.8 | ent_coef=0.0010 | ent=1.079
+Ep 1220 | retour=    -4.8 | moy(100)=    5.9 | ent_coef=0.0010 | ent=1.081
+Ep 1230 | retour=    39.4 | moy(100)=   11.2 | ent_coef=0.0010 | ent=1.048
+Ep 1240 | retour=     5.0 | moy(100)=   16.5 | ent_coef=0.0010 | ent=1.010
+Ep 1250 | retour=    68.4 | moy(100)=   20.7 | ent_coef=0.0010 | ent=0.953
+[EVAL] Ep 1250 | retour moyen (10 ep) = -81.8
+Ep 1260 | retour=    75.9 | moy(100)=   24.5 | ent_coef=0.0010 | ent=1.056
+Ep 1270 | retour=    85.1 | moy(100)=   34.0 | ent_coef=0.0010 | ent=1.076
+Ep 1280 | retour=    49.7 | moy(100)=   38.3 | ent_coef=0.0010 | ent=1.075
+Ep 1290 | retour=    -3.6 | moy(100)=   41.7 | ent_coef=0.0010 | ent=0.909
+Ep 1300 | retour=    72.9 | moy(100)=   51.3 | ent_coef=0.0010 | ent=1.076
+[EVAL] Ep 1300 | retour moyen (10 ep) = 120.3
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 1310 | retour=    54.8 | moy(100)=   51.8 | ent_coef=0.0010 | ent=0.933
+Ep 1320 | retour=    60.2 | moy(100)=   57.1 | ent_coef=0.0010 | ent=0.959
+Ep 1330 | retour=    96.4 | moy(100)=   58.1 | ent_coef=0.0010 | ent=1.043
+Ep 1340 | retour=   142.5 | moy(100)=   59.6 | ent_coef=0.0010 | ent=1.068
+Ep 1350 | retour=   109.2 | moy(100)=   66.6 | ent_coef=0.0010 | ent=0.982
+[EVAL] Ep 1350 | retour moyen (10 ep) = 133.0
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 1360 | retour=   147.7 | moy(100)=   67.8 | ent_coef=0.0010 | ent=1.060
+Ep 1370 | retour=   152.7 | moy(100)=   67.5 | ent_coef=0.0010 | ent=1.072
+Ep 1380 | retour=    99.8 | moy(100)=   66.6 | ent_coef=0.0010 | ent=1.066
+Ep 1390 | retour=    22.1 | moy(100)=   71.7 | ent_coef=0.0010 | ent=0.948
+Ep 1400 | retour=   113.8 | moy(100)=   71.1 | ent_coef=0.0010 | ent=1.047
+[EVAL] Ep 1400 | retour moyen (10 ep) = 85.0
+Ep 1410 | retour=    29.0 | moy(100)=   71.4 | ent_coef=0.0010 | ent=0.879
+Ep 1420 | retour=   108.5 | moy(100)=   74.6 | ent_coef=0.0010 | ent=1.023
+Ep 1430 | retour=    73.3 | moy(100)=   78.0 | ent_coef=0.0010 | ent=1.016
+Ep 1440 | retour=    67.0 | moy(100)=   76.2 | ent_coef=0.0010 | ent=1.031
+Ep 1450 | retour=    93.7 | moy(100)=   76.0 | ent_coef=0.0010 | ent=1.069
+[EVAL] Ep 1450 | retour moyen (10 ep) = 90.8
+Ep 1460 | retour=    16.8 | moy(100)=   69.8 | ent_coef=0.0010 | ent=0.989
+Ep 1470 | retour=    88.5 | moy(100)=   67.6 | ent_coef=0.0010 | ent=0.998
+Ep 1480 | retour=    80.9 | moy(100)=   66.7 | ent_coef=0.0010 | ent=0.956
+Ep 1490 | retour=   -42.6 | moy(100)=   60.2 | ent_coef=0.0010 | ent=1.050
+Ep 1500 | retour=  -116.5 | moy(100)=   51.5 | ent_coef=0.0010 | ent=1.037
+[EVAL] Ep 1500 | retour moyen (10 ep) = -38.1
+Ep 1510 | retour=   113.8 | moy(100)=   48.6 | ent_coef=0.0010 | ent=0.899
+Ep 1520 | retour=     9.2 | moy(100)=   45.6 | ent_coef=0.0010 | ent=1.011
+Ep 1530 | retour=   -23.4 | moy(100)=   44.8 | ent_coef=0.0010 | ent=1.023
+Ep 1540 | retour=    54.2 | moy(100)=   44.5 | ent_coef=0.0010 | ent=0.944
+Ep 1550 | retour=    93.7 | moy(100)=   37.0 | ent_coef=0.0010 | ent=0.927
+[EVAL] Ep 1550 | retour moyen (10 ep) = -22.7
+Ep 1560 | retour=    77.5 | moy(100)=   42.3 | ent_coef=0.0010 | ent=0.911
+Ep 1570 | retour=    88.0 | moy(100)=   41.5 | ent_coef=0.0010 | ent=0.919
+Ep 1580 | retour=   125.9 | moy(100)=   43.3 | ent_coef=0.0010 | ent=0.927
+Ep 1590 | retour=   150.9 | moy(100)=   48.0 | ent_coef=0.0010 | ent=0.916
+Ep 1600 | retour=   125.7 | moy(100)=   58.3 | ent_coef=0.0010 | ent=0.978
+[EVAL] Ep 1600 | retour moyen (10 ep) = 85.5
+Ep 1610 | retour=   107.2 | moy(100)=   60.9 | ent_coef=0.0010 | ent=0.951
+Ep 1620 | retour=   126.2 | moy(100)=   63.6 | ent_coef=0.0010 | ent=0.978
+Ep 1630 | retour=    98.6 | moy(100)=   63.2 | ent_coef=0.0010 | ent=0.948
+Ep 1640 | retour=   -22.1 | moy(100)=   64.8 | ent_coef=0.0010 | ent=0.975
+Ep 1650 | retour=    26.4 | moy(100)=   70.6 | ent_coef=0.0010 | ent=0.916
+[EVAL] Ep 1650 | retour moyen (10 ep) = 50.8
+Ep 1660 | retour=   155.9 | moy(100)=   74.4 | ent_coef=0.0010 | ent=1.010
+Ep 1670 | retour=    52.7 | moy(100)=   75.1 | ent_coef=0.0010 | ent=0.878
+Ep 1680 | retour=    54.4 | moy(100)=   73.3 | ent_coef=0.0010 | ent=0.971
+Ep 1690 | retour=   148.8 | moy(100)=   73.4 | ent_coef=0.0010 | ent=1.036
+Ep 1700 | retour=    57.7 | moy(100)=   71.1 | ent_coef=0.0010 | ent=0.899
+[EVAL] Ep 1700 | retour moyen (10 ep) = 105.2
+Ep 1710 | retour=   145.0 | moy(100)=   74.9 | ent_coef=0.0010 | ent=0.926
+Ep 1720 | retour=    -1.1 | moy(100)=   75.2 | ent_coef=0.0010 | ent=0.986
+Ep 1730 | retour=   146.1 | moy(100)=   76.2 | ent_coef=0.0010 | ent=0.965
+Ep 1740 | retour=   103.1 | moy(100)=   79.8 | ent_coef=0.0010 | ent=0.974
+Ep 1750 | retour=    88.5 | moy(100)=   80.2 | ent_coef=0.0010 | ent=1.050
+[EVAL] Ep 1750 | retour moyen (10 ep) = 86.7
+Ep 1760 | retour=    86.2 | moy(100)=   80.2 | ent_coef=0.0010 | ent=0.981
+Ep 1770 | retour=    52.9 | moy(100)=   80.2 | ent_coef=0.0010 | ent=0.835
+Ep 1780 | retour=   143.2 | moy(100)=   83.2 | ent_coef=0.0010 | ent=0.979
+Ep 1790 | retour=   136.2 | moy(100)=   84.2 | ent_coef=0.0010 | ent=1.055
+Ep 1800 | retour=   -32.9 | moy(100)=   84.4 | ent_coef=0.0010 | ent=0.874
+[EVAL] Ep 1800 | retour moyen (10 ep) = 59.5
+Ep 1810 | retour=   -32.6 | moy(100)=   83.8 | ent_coef=0.0010 | ent=1.010
+Ep 1820 | retour=   106.8 | moy(100)=   87.3 | ent_coef=0.0010 | ent=1.013
+Ep 1830 | retour=   126.4 | moy(100)=   87.8 | ent_coef=0.0010 | ent=1.021
+Ep 1840 | retour=    84.4 | moy(100)=   91.1 | ent_coef=0.0010 | ent=1.030
+Ep 1850 | retour=   161.0 | moy(100)=   94.0 | ent_coef=0.0010 | ent=0.942
+[EVAL] Ep 1850 | retour moyen (10 ep) = 138.5
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 1860 | retour=   101.3 | moy(100)=   93.8 | ent_coef=0.0010 | ent=0.997
+Ep 1870 | retour=   109.7 | moy(100)=   97.3 | ent_coef=0.0010 | ent=0.942
+Ep 1880 | retour=   110.8 | moy(100)=   98.0 | ent_coef=0.0010 | ent=1.021
+Ep 1890 | retour=   146.7 | moy(100)=   98.8 | ent_coef=0.0010 | ent=0.935
+Ep 1900 | retour=   162.8 | moy(100)=  101.8 | ent_coef=0.0010 | ent=0.935
+[EVAL] Ep 1900 | retour moyen (10 ep) = 107.8
+Ep 1910 | retour=   142.8 | moy(100)=  103.2 | ent_coef=0.0010 | ent=0.872
+Ep 1920 | retour=    89.4 | moy(100)=   95.0 | ent_coef=0.0010 | ent=0.961
+Ep 1930 | retour=   140.8 | moy(100)=   96.5 | ent_coef=0.0010 | ent=0.958
+Ep 1940 | retour=    95.1 | moy(100)=   90.7 | ent_coef=0.0010 | ent=0.963
+Ep 1950 | retour=   122.1 | moy(100)=   89.5 | ent_coef=0.0010 | ent=0.929
+[EVAL] Ep 1950 | retour moyen (10 ep) = 101.7
+Ep 1960 | retour=   186.5 | moy(100)=   89.1 | ent_coef=0.0010 | ent=0.901
+Ep 1970 | retour=    20.1 | moy(100)=   88.8 | ent_coef=0.0010 | ent=0.867
+Ep 1980 | retour=   107.0 | moy(100)=   86.3 | ent_coef=0.0010 | ent=0.794
+Ep 1990 | retour=   140.1 | moy(100)=   86.3 | ent_coef=0.0010 | ent=0.977
+Ep 2000 | retour=   107.9 | moy(100)=   83.3 | ent_coef=0.0010 | ent=0.827
+[EVAL] Ep 2000 | retour moyen (10 ep) = 57.0
+Ep 2010 | retour=   110.0 | moy(100)=   84.5 | ent_coef=0.0010 | ent=0.980
+Ep 2020 | retour=    -4.3 | moy(100)=   87.3 | ent_coef=0.0010 | ent=0.940
+Ep 2030 | retour=   124.5 | moy(100)=   88.4 | ent_coef=0.0010 | ent=0.976
+Ep 2040 | retour=   146.0 | moy(100)=   93.8 | ent_coef=0.0010 | ent=0.968
+Ep 2050 | retour=   147.1 | moy(100)=   96.8 | ent_coef=0.0010 | ent=0.969
+[EVAL] Ep 2050 | retour moyen (10 ep) = 168.2
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 2060 | retour=    -4.9 | moy(100)=   96.1 | ent_coef=0.0010 | ent=0.860
+Ep 2070 | retour=    72.8 | moy(100)=   97.0 | ent_coef=0.0010 | ent=0.972
+Ep 2080 | retour=    88.1 | moy(100)=  101.5 | ent_coef=0.0010 | ent=0.908
+Ep 2090 | retour=    99.2 | moy(100)=   96.7 | ent_coef=0.0010 | ent=1.000
+Ep 2100 | retour=   103.7 | moy(100)=   96.3 | ent_coef=0.0010 | ent=0.952
+[EVAL] Ep 2100 | retour moyen (10 ep) = 158.5
+Ep 2110 | retour=    -2.2 | moy(100)=   89.7 | ent_coef=0.0010 | ent=0.956
+Ep 2120 | retour=   129.5 | moy(100)=   92.7 | ent_coef=0.0010 | ent=0.971
+Ep 2130 | retour=    43.1 | moy(100)=   91.5 | ent_coef=0.0010 | ent=0.910
+Ep 2140 | retour=    11.6 | moy(100)=   90.5 | ent_coef=0.0010 | ent=0.945
+Ep 2150 | retour=     4.2 | moy(100)=   84.2 | ent_coef=0.0010 | ent=0.836
+[EVAL] Ep 2150 | retour moyen (10 ep) = 157.7
+Ep 2160 | retour=    41.9 | moy(100)=   85.0 | ent_coef=0.0010 | ent=0.842
+Ep 2170 | retour=    84.9 | moy(100)=   82.3 | ent_coef=0.0010 | ent=0.961
+Ep 2180 | retour=   101.3 | moy(100)=   80.7 | ent_coef=0.0010 | ent=0.763
+Ep 2190 | retour=    72.7 | moy(100)=   86.4 | ent_coef=0.0010 | ent=1.053
+Ep 2200 | retour=   -16.2 | moy(100)=   88.4 | ent_coef=0.0010 | ent=0.907
+[EVAL] Ep 2200 | retour moyen (10 ep) = 127.4
+Ep 2210 | retour=   114.1 | moy(100)=   92.6 | ent_coef=0.0010 | ent=0.840
+Ep 2220 | retour=    50.5 | moy(100)=   91.6 | ent_coef=0.0010 | ent=0.801
+Ep 2230 | retour=   134.6 | moy(100)=   90.1 | ent_coef=0.0010 | ent=1.068
+Ep 2240 | retour=    11.6 | moy(100)=   87.4 | ent_coef=0.0010 | ent=0.870
+Ep 2250 | retour=   151.5 | moy(100)=   94.2 | ent_coef=0.0010 | ent=1.101
+[EVAL] Ep 2250 | retour moyen (10 ep) = 101.5
+Ep 2260 | retour=   134.3 | moy(100)=   95.1 | ent_coef=0.0010 | ent=1.076
+Ep 2270 | retour=    86.9 | moy(100)=   97.8 | ent_coef=0.0010 | ent=1.102
+Ep 2280 | retour=    14.9 | moy(100)=  100.2 | ent_coef=0.0010 | ent=1.006
+Ep 2290 | retour=   113.4 | moy(100)=  102.2 | ent_coef=0.0010 | ent=1.109
+Ep 2300 | retour=   104.3 | moy(100)=  104.7 | ent_coef=0.0010 | ent=1.120
+[EVAL] Ep 2300 | retour moyen (10 ep) = -0.4
+Ep 2310 | retour=   149.9 | moy(100)=  107.0 | ent_coef=0.0010 | ent=1.084
+Ep 2320 | retour=   128.9 | moy(100)=  110.0 | ent_coef=0.0010 | ent=1.109
+Ep 2330 | retour=   139.1 | moy(100)=  115.2 | ent_coef=0.0010 | ent=1.056
+Ep 2340 | retour=   179.2 | moy(100)=  118.6 | ent_coef=0.0010 | ent=1.044
+Ep 2350 | retour=     1.0 | moy(100)=  115.9 | ent_coef=0.0010 | ent=0.861
+[EVAL] Ep 2350 | retour moyen (10 ep) = 122.6
+Ep 2360 | retour=   199.9 | moy(100)=  115.4 | ent_coef=0.0010 | ent=0.800
+Ep 2370 | retour=    52.0 | moy(100)=  113.8 | ent_coef=0.0010 | ent=0.967
+Ep 2380 | retour=   116.4 | moy(100)=  110.6 | ent_coef=0.0010 | ent=1.063
+Ep 2390 | retour=   104.6 | moy(100)=  106.9 | ent_coef=0.0010 | ent=0.950
+Ep 2400 | retour=    90.2 | moy(100)=  106.1 | ent_coef=0.0010 | ent=1.046
+[EVAL] Ep 2400 | retour moyen (10 ep) = 128.5
+Ep 2410 | retour=   156.2 | moy(100)=  104.5 | ent_coef=0.0010 | ent=0.952
+Ep 2420 | retour=     1.2 | moy(100)=  106.1 | ent_coef=0.0010 | ent=0.824
+Ep 2430 | retour=   126.2 | moy(100)=  106.7 | ent_coef=0.0010 | ent=0.977
+Ep 2440 | retour=   134.4 | moy(100)=  104.4 | ent_coef=0.0010 | ent=1.004
+Ep 2450 | retour=   216.8 | moy(100)=  107.4 | ent_coef=0.0010 | ent=0.811
+[EVAL] Ep 2450 | retour moyen (10 ep) = 141.9
+Ep 2460 | retour=    39.3 | moy(100)=  108.1 | ent_coef=0.0010 | ent=0.734
+Ep 2470 | retour=   117.4 | moy(100)=  108.3 | ent_coef=0.0010 | ent=0.908
+Ep 2480 | retour=     1.9 | moy(100)=  113.1 | ent_coef=0.0010 | ent=0.903
+Ep 2490 | retour=   146.9 | moy(100)=  113.5 | ent_coef=0.0010 | ent=0.969
+Ep 2500 | retour=   104.4 | moy(100)=  114.6 | ent_coef=0.0010 | ent=0.976
+[EVAL] Ep 2500 | retour moyen (10 ep) = 155.9
+Ep 2510 | retour=    54.7 | moy(100)=  113.3 | ent_coef=0.0010 | ent=0.950
+Ep 2520 | retour=    49.7 | moy(100)=  109.8 | ent_coef=0.0010 | ent=0.834
+Ep 2530 | retour=   136.8 | moy(100)=  104.0 | ent_coef=0.0010 | ent=0.981
+Ep 2540 | retour=   143.8 | moy(100)=  106.2 | ent_coef=0.0010 | ent=0.951
+Ep 2550 | retour=   140.6 | moy(100)=  105.0 | ent_coef=0.0010 | ent=0.993
+[EVAL] Ep 2550 | retour moyen (10 ep) = 117.8
+Ep 2560 | retour=   127.8 | moy(100)=  104.0 | ent_coef=0.0010 | ent=0.987
+Ep 2570 | retour=   121.2 | moy(100)=  105.0 | ent_coef=0.0010 | ent=0.877
+Ep 2580 | retour=   147.0 | moy(100)=  104.0 | ent_coef=0.0010 | ent=0.987
+Ep 2590 | retour=   205.9 | moy(100)=  108.5 | ent_coef=0.0010 | ent=0.771
+Ep 2600 | retour=   148.1 | moy(100)=  109.2 | ent_coef=0.0010 | ent=0.982
+[EVAL] Ep 2600 | retour moyen (10 ep) = 115.6
+Ep 2610 | retour=   147.7 | moy(100)=  110.5 | ent_coef=0.0010 | ent=0.862
+Ep 2620 | retour=   148.4 | moy(100)=  110.5 | ent_coef=0.0010 | ent=0.952
+Ep 2630 | retour=   -12.9 | moy(100)=  113.0 | ent_coef=0.0010 | ent=0.957
+Ep 2640 | retour=   152.2 | moy(100)=  109.1 | ent_coef=0.0010 | ent=0.959
+Ep 2650 | retour=   129.4 | moy(100)=  111.0 | ent_coef=0.0010 | ent=0.969
+[EVAL] Ep 2650 | retour moyen (10 ep) = 155.1
+Ep 2660 | retour=   115.0 | moy(100)=  114.0 | ent_coef=0.0010 | ent=0.778
+Ep 2670 | retour=    23.4 | moy(100)=  112.3 | ent_coef=0.0010 | ent=0.871
+Ep 2680 | retour=   213.7 | moy(100)=  108.6 | ent_coef=0.0010 | ent=0.796
+Ep 2690 | retour=   115.5 | moy(100)=  104.5 | ent_coef=0.0010 | ent=0.989
+Ep 2700 | retour=   120.6 | moy(100)=  101.4 | ent_coef=0.0010 | ent=0.980
+[EVAL] Ep 2700 | retour moyen (10 ep) = 121.6
+Ep 2710 | retour=   132.6 | moy(100)=  100.2 | ent_coef=0.0010 | ent=0.863
+Ep 2720 | retour=   150.3 | moy(100)=  103.1 | ent_coef=0.0010 | ent=0.994
+Ep 2730 | retour=   124.4 | moy(100)=  106.9 | ent_coef=0.0010 | ent=0.847
+Ep 2740 | retour=   150.8 | moy(100)=  112.7 | ent_coef=0.0010 | ent=0.956
+Ep 2750 | retour=   122.1 | moy(100)=  113.1 | ent_coef=0.0010 | ent=1.006
+[EVAL] Ep 2750 | retour moyen (10 ep) = 124.2
+Ep 2760 | retour=   121.4 | moy(100)=  109.6 | ent_coef=0.0010 | ent=1.012
+Ep 2770 | retour=   162.6 | moy(100)=  113.6 | ent_coef=0.0010 | ent=1.022
+Ep 2780 | retour=   148.8 | moy(100)=  117.8 | ent_coef=0.0010 | ent=0.950
+Ep 2790 | retour=   117.8 | moy(100)=  117.7 | ent_coef=0.0010 | ent=0.847
+Ep 2800 | retour=   124.9 | moy(100)=  121.6 | ent_coef=0.0010 | ent=1.013
+[EVAL] Ep 2800 | retour moyen (10 ep) = 163.4
+Ep 2810 | retour=   179.2 | moy(100)=  125.7 | ent_coef=0.0010 | ent=0.606
+Ep 2820 | retour=   108.6 | moy(100)=  126.7 | ent_coef=0.0010 | ent=1.030
+Ep 2830 | retour=   116.6 | moy(100)=  123.9 | ent_coef=0.0010 | ent=1.038
+Ep 2840 | retour=   135.0 | moy(100)=  121.9 | ent_coef=0.0010 | ent=1.024
+Ep 2850 | retour=   154.2 | moy(100)=  121.1 | ent_coef=0.0010 | ent=0.970
+[EVAL] Ep 2850 | retour moyen (10 ep) = 144.9
+Ep 2860 | retour=   143.2 | moy(100)=  121.8 | ent_coef=0.0010 | ent=0.884
+Ep 2870 | retour=   121.3 | moy(100)=  119.3 | ent_coef=0.0010 | ent=1.014
+Ep 2880 | retour=   190.7 | moy(100)=  116.3 | ent_coef=0.0010 | ent=1.010
+Ep 2890 | retour=   129.9 | moy(100)=  111.5 | ent_coef=0.0010 | ent=0.994
+Ep 2900 | retour=   157.1 | moy(100)=  106.1 | ent_coef=0.0010 | ent=0.963
+[EVAL] Ep 2900 | retour moyen (10 ep) = 146.1
+Ep 2910 | retour=   116.2 | moy(100)=   97.2 | ent_coef=0.0010 | ent=0.951
+Ep 2920 | retour=   114.9 | moy(100)=   91.4 | ent_coef=0.0010 | ent=1.017
+Ep 2930 | retour=     5.5 | moy(100)=   86.8 | ent_coef=0.0010 | ent=0.901
+Ep 2940 | retour=    96.5 | moy(100)=   87.1 | ent_coef=0.0010 | ent=0.892
+Ep 2950 | retour=   122.5 | moy(100)=   82.5 | ent_coef=0.0010 | ent=0.906
+[EVAL] Ep 2950 | retour moyen (10 ep) = 137.5
+Ep 2960 | retour=    52.8 | moy(100)=   81.8 | ent_coef=0.0010 | ent=0.828
+Ep 2970 | retour=   231.2 | moy(100)=   79.8 | ent_coef=0.0010 | ent=0.939
+Ep 2980 | retour=    82.8 | moy(100)=   81.8 | ent_coef=0.0010 | ent=0.918
+Ep 2990 | retour=   228.2 | moy(100)=   90.6 | ent_coef=0.0010 | ent=0.715
+Ep 3000 | retour=   164.4 | moy(100)=   95.5 | ent_coef=0.0010 | ent=0.933
+[EVAL] Ep 3000 | retour moyen (10 ep) = 141.0
+Ep 3010 | retour=     4.3 | moy(100)=  101.2 | ent_coef=0.0010 | ent=0.864
+Ep 3020 | retour=   105.9 | moy(100)=  104.4 | ent_coef=0.0010 | ent=0.854
+Ep 3030 | retour=   162.1 | moy(100)=  109.7 | ent_coef=0.0010 | ent=0.935
+Ep 3040 | retour=   137.7 | moy(100)=  108.5 | ent_coef=0.0010 | ent=0.980
+Ep 3050 | retour=    93.5 | moy(100)=  112.1 | ent_coef=0.0010 | ent=1.010
+[EVAL] Ep 3050 | retour moyen (10 ep) = 114.9
+Ep 3060 | retour=    14.7 | moy(100)=  116.6 | ent_coef=0.0010 | ent=0.877
+Ep 3070 | retour=   154.4 | moy(100)=  123.3 | ent_coef=0.0010 | ent=0.971
+Ep 3080 | retour=   128.4 | moy(100)=  125.8 | ent_coef=0.0010 | ent=0.996
+Ep 3090 | retour=   140.1 | moy(100)=  121.9 | ent_coef=0.0010 | ent=0.969
+Ep 3100 | retour=   189.0 | moy(100)=  116.4 | ent_coef=0.0010 | ent=0.987
+[EVAL] Ep 3100 | retour moyen (10 ep) = 143.0
+Ep 3110 | retour=   113.8 | moy(100)=  119.1 | ent_coef=0.0010 | ent=1.039
+Ep 3120 | retour=   196.9 | moy(100)=  120.2 | ent_coef=0.0010 | ent=0.990
+Ep 3130 | retour=   123.8 | moy(100)=  118.8 | ent_coef=0.0010 | ent=0.981
+Ep 3140 | retour=   100.3 | moy(100)=  120.9 | ent_coef=0.0010 | ent=0.890
+Ep 3150 | retour=   148.0 | moy(100)=  122.3 | ent_coef=0.0010 | ent=1.021
+[EVAL] Ep 3150 | retour moyen (10 ep) = 126.7
+Ep 3160 | retour=   170.8 | moy(100)=  122.7 | ent_coef=0.0010 | ent=1.028
+Ep 3170 | retour=   126.7 | moy(100)=  121.3 | ent_coef=0.0010 | ent=1.049
+Ep 3180 | retour=   157.5 | moy(100)=  118.2 | ent_coef=0.0010 | ent=1.011
+Ep 3190 | retour=   134.4 | moy(100)=  121.1 | ent_coef=0.0010 | ent=1.042
+Ep 3200 | retour=   130.7 | moy(100)=  126.8 | ent_coef=0.0010 | ent=1.062
+[EVAL] Ep 3200 | retour moyen (10 ep) = 168.8
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 3210 | retour=   150.1 | moy(100)=  125.3 | ent_coef=0.0010 | ent=1.048
+Ep 3220 | retour=    18.5 | moy(100)=  124.7 | ent_coef=0.0010 | ent=0.976
+Ep 3230 | retour=   141.2 | moy(100)=  128.6 | ent_coef=0.0010 | ent=1.050
+Ep 3240 | retour=   127.0 | moy(100)=  128.3 | ent_coef=0.0010 | ent=1.059
+Ep 3250 | retour=   147.1 | moy(100)=  129.5 | ent_coef=0.0010 | ent=1.044
+[EVAL] Ep 3250 | retour moyen (10 ep) = 99.9
+Ep 3260 | retour=   137.4 | moy(100)=  127.4 | ent_coef=0.0010 | ent=1.045
+Ep 3270 | retour=   119.4 | moy(100)=  125.1 | ent_coef=0.0010 | ent=1.013
+Ep 3280 | retour=   108.8 | moy(100)=  123.5 | ent_coef=0.0010 | ent=0.834
+Ep 3290 | retour=   142.7 | moy(100)=  124.1 | ent_coef=0.0010 | ent=1.010
+Ep 3300 | retour=   139.4 | moy(100)=  123.3 | ent_coef=0.0010 | ent=0.874
+[EVAL] Ep 3300 | retour moyen (10 ep) = 71.0
+Ep 3310 | retour=   122.0 | moy(100)=  123.9 | ent_coef=0.0010 | ent=1.027
+Ep 3320 | retour=   102.4 | moy(100)=  125.3 | ent_coef=0.0010 | ent=0.986
+Ep 3330 | retour=   139.3 | moy(100)=  124.1 | ent_coef=0.0010 | ent=1.019
+Ep 3340 | retour=   156.3 | moy(100)=  122.8 | ent_coef=0.0010 | ent=0.990
+Ep 3350 | retour=   143.7 | moy(100)=  120.4 | ent_coef=0.0010 | ent=0.845
+[EVAL] Ep 3350 | retour moyen (10 ep) = 148.2
+Ep 3360 | retour=    96.5 | moy(100)=  119.1 | ent_coef=0.0010 | ent=1.029
+Ep 3370 | retour=    49.2 | moy(100)=  118.9 | ent_coef=0.0010 | ent=0.866
+Ep 3380 | retour=   117.8 | moy(100)=  118.0 | ent_coef=0.0010 | ent=1.022
+Ep 3390 | retour=   122.6 | moy(100)=  112.9 | ent_coef=0.0010 | ent=1.053
+Ep 3400 | retour=    62.9 | moy(100)=  108.3 | ent_coef=0.0010 | ent=0.949
+[EVAL] Ep 3400 | retour moyen (10 ep) = 164.6
+Ep 3410 | retour=    44.6 | moy(100)=  102.9 | ent_coef=0.0010 | ent=0.797
+Ep 3420 | retour=     6.6 | moy(100)=   99.6 | ent_coef=0.0010 | ent=0.960
+Ep 3430 | retour=    53.2 | moy(100)=   92.2 | ent_coef=0.0010 | ent=0.861
+Ep 3440 | retour=   143.4 | moy(100)=   90.6 | ent_coef=0.0010 | ent=1.005
+Ep 3450 | retour=    16.9 | moy(100)=   85.8 | ent_coef=0.0010 | ent=0.977
+[EVAL] Ep 3450 | retour moyen (10 ep) = 104.9
+Ep 3460 | retour=    54.7 | moy(100)=   82.6 | ent_coef=0.0010 | ent=0.816
+Ep 3470 | retour=     6.5 | moy(100)=   79.0 | ent_coef=0.0010 | ent=0.886
+Ep 3480 | retour=   143.4 | moy(100)=   86.5 | ent_coef=0.0010 | ent=1.022
+Ep 3490 | retour=    19.0 | moy(100)=   88.4 | ent_coef=0.0010 | ent=0.759
+Ep 3500 | retour=   144.9 | moy(100)=   93.2 | ent_coef=0.0010 | ent=1.026
+[EVAL] Ep 3500 | retour moyen (10 ep) = 111.9
+Ep 3510 | retour=    13.4 | moy(100)=   98.7 | ent_coef=0.0010 | ent=0.782
+Ep 3520 | retour=   136.9 | moy(100)=  102.3 | ent_coef=0.0010 | ent=1.037
+Ep 3530 | retour=   159.5 | moy(100)=  107.8 | ent_coef=0.0010 | ent=1.035
+Ep 3540 | retour=    90.5 | moy(100)=  111.7 | ent_coef=0.0010 | ent=0.804
+Ep 3550 | retour=   140.5 | moy(100)=  118.7 | ent_coef=0.0010 | ent=1.004
+[EVAL] Ep 3550 | retour moyen (10 ep) = 149.8
+Ep 3560 | retour=   115.9 | moy(100)=  122.9 | ent_coef=0.0010 | ent=1.034
+Ep 3570 | retour=   107.6 | moy(100)=  127.7 | ent_coef=0.0010 | ent=1.007
+Ep 3580 | retour=   103.4 | moy(100)=  125.3 | ent_coef=0.0010 | ent=1.022
+Ep 3590 | retour=   124.8 | moy(100)=  126.4 | ent_coef=0.0010 | ent=1.001
+Ep 3600 | retour=    90.2 | moy(100)=  124.8 | ent_coef=0.0010 | ent=0.957
+[EVAL] Ep 3600 | retour moyen (10 ep) = 101.8
+Ep 3610 | retour=   115.1 | moy(100)=  126.2 | ent_coef=0.0010 | ent=1.004
+Ep 3620 | retour=   114.0 | moy(100)=  124.2 | ent_coef=0.0010 | ent=1.018
+Ep 3630 | retour=   144.0 | moy(100)=  125.9 | ent_coef=0.0010 | ent=1.002
+Ep 3640 | retour=   184.3 | moy(100)=  126.5 | ent_coef=0.0010 | ent=0.973
+Ep 3650 | retour=   139.4 | moy(100)=  123.9 | ent_coef=0.0010 | ent=0.973
+[EVAL] Ep 3650 | retour moyen (10 ep) = 137.5
+Ep 3660 | retour=   114.6 | moy(100)=  124.3 | ent_coef=0.0010 | ent=0.962
+Ep 3670 | retour=    -8.7 | moy(100)=  123.3 | ent_coef=0.0010 | ent=0.991
+Ep 3680 | retour=    15.8 | moy(100)=  122.1 | ent_coef=0.0010 | ent=0.935
+Ep 3690 | retour=   144.2 | moy(100)=  122.0 | ent_coef=0.0010 | ent=0.963
+Ep 3700 | retour=   117.5 | moy(100)=  121.4 | ent_coef=0.0010 | ent=0.977
+[EVAL] Ep 3700 | retour moyen (10 ep) = 184.3
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 3710 | retour=   172.8 | moy(100)=  121.0 | ent_coef=0.0010 | ent=0.831
+Ep 3720 | retour=   121.6 | moy(100)=  122.4 | ent_coef=0.0010 | ent=0.989
+Ep 3730 | retour=    16.7 | moy(100)=  120.4 | ent_coef=0.0010 | ent=0.923
+Ep 3740 | retour=   152.5 | moy(100)=  120.2 | ent_coef=0.0010 | ent=0.947
+Ep 3750 | retour=   109.0 | moy(100)=  123.1 | ent_coef=0.0010 | ent=0.930
+[EVAL] Ep 3750 | retour moyen (10 ep) = 143.4
+Ep 3760 | retour=   133.0 | moy(100)=  124.0 | ent_coef=0.0010 | ent=0.950
+Ep 3770 | retour=   178.2 | moy(100)=  126.9 | ent_coef=0.0010 | ent=0.969
+Ep 3780 | retour=   119.3 | moy(100)=  125.9 | ent_coef=0.0010 | ent=0.982
+Ep 3790 | retour=   153.8 | moy(100)=  127.8 | ent_coef=0.0010 | ent=1.004
+Ep 3800 | retour=   178.0 | moy(100)=  130.8 | ent_coef=0.0010 | ent=1.000
+[EVAL] Ep 3800 | retour moyen (10 ep) = 122.6
+Ep 3810 | retour=   158.2 | moy(100)=  131.6 | ent_coef=0.0010 | ent=1.041
+Ep 3820 | retour=   166.2 | moy(100)=  132.3 | ent_coef=0.0010 | ent=1.078
+Ep 3830 | retour=   161.0 | moy(100)=  135.4 | ent_coef=0.0010 | ent=1.024
+Ep 3840 | retour=   179.0 | moy(100)=  136.7 | ent_coef=0.0010 | ent=1.087
+Ep 3850 | retour=   118.9 | moy(100)=  135.1 | ent_coef=0.0010 | ent=1.087
+[EVAL] Ep 3850 | retour moyen (10 ep) = 228.1
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 3860 | retour=   172.4 | moy(100)=  134.9 | ent_coef=0.0010 | ent=0.996
+Ep 3870 | retour=    60.7 | moy(100)=  127.0 | ent_coef=0.0010 | ent=1.027
+Ep 3880 | retour=    33.9 | moy(100)=  128.3 | ent_coef=0.0010 | ent=0.903
+Ep 3890 | retour=   136.6 | moy(100)=  125.6 | ent_coef=0.0010 | ent=1.047
+Ep 3900 | retour=    38.5 | moy(100)=  123.6 | ent_coef=0.0010 | ent=1.018
+[EVAL] Ep 3900 | retour moyen (10 ep) = 202.4
+Ep 3910 | retour=   162.3 | moy(100)=  119.7 | ent_coef=0.0010 | ent=1.064
+Ep 3920 | retour=    53.9 | moy(100)=  120.3 | ent_coef=0.0010 | ent=1.048
+Ep 3930 | retour=   167.8 | moy(100)=  121.8 | ent_coef=0.0010 | ent=1.078
+Ep 3940 | retour=    36.3 | moy(100)=  117.4 | ent_coef=0.0010 | ent=0.962
+Ep 3950 | retour=    44.3 | moy(100)=  118.5 | ent_coef=0.0010 | ent=0.994
+[EVAL] Ep 3950 | retour moyen (10 ep) = 165.5
+Ep 3960 | retour=   179.7 | moy(100)=  121.6 | ent_coef=0.0010 | ent=1.088
+Ep 3970 | retour=   144.7 | moy(100)=  129.7 | ent_coef=0.0010 | ent=1.034
+Ep 3980 | retour=   144.0 | moy(100)=  130.3 | ent_coef=0.0010 | ent=1.081
+Ep 3990 | retour=   124.5 | moy(100)=  134.4 | ent_coef=0.0010 | ent=1.055
+Ep 4000 | retour=   156.4 | moy(100)=  138.4 | ent_coef=0.0010 | ent=0.983
+[EVAL] Ep 4000 | retour moyen (10 ep) = 122.3
+Ep 4010 | retour=   165.9 | moy(100)=  140.7 | ent_coef=0.0010 | ent=1.090
+Ep 4020 | retour=   127.1 | moy(100)=  142.1 | ent_coef=0.0010 | ent=1.072
+Ep 4030 | retour=   116.2 | moy(100)=  140.5 | ent_coef=0.0010 | ent=1.038
+Ep 4040 | retour=    51.0 | moy(100)=  144.5 | ent_coef=0.0010 | ent=0.852
+Ep 4050 | retour=    13.3 | moy(100)=  141.7 | ent_coef=0.0010 | ent=0.963
+[EVAL] Ep 4050 | retour moyen (10 ep) = 241.0
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 4060 | retour=   166.9 | moy(100)=  137.5 | ent_coef=0.0010 | ent=1.081
+Ep 4070 | retour=    94.6 | moy(100)=  133.1 | ent_coef=0.0010 | ent=0.913
+Ep 4080 | retour=   235.6 | moy(100)=  132.5 | ent_coef=0.0010 | ent=0.845
+Ep 4090 | retour=   145.9 | moy(100)=  125.4 | ent_coef=0.0010 | ent=1.084
+Ep 4100 | retour=   154.3 | moy(100)=  121.7 | ent_coef=0.0010 | ent=1.082
+[EVAL] Ep 4100 | retour moyen (10 ep) = 208.0
+Ep 4110 | retour=   184.2 | moy(100)=  115.5 | ent_coef=0.0010 | ent=1.036
+Ep 4120 | retour=   113.1 | moy(100)=  113.3 | ent_coef=0.0010 | ent=1.091
+Ep 4130 | retour=    48.7 | moy(100)=  107.8 | ent_coef=0.0010 | ent=0.836
+Ep 4140 | retour=   107.8 | moy(100)=  103.7 | ent_coef=0.0010 | ent=0.579
+Ep 4150 | retour=   149.5 | moy(100)=  105.5 | ent_coef=0.0010 | ent=1.115
+[EVAL] Ep 4150 | retour moyen (10 ep) = 109.9
+Ep 4160 | retour=    41.7 | moy(100)=  107.2 | ent_coef=0.0010 | ent=0.817
+Ep 4170 | retour=    42.9 | moy(100)=  110.0 | ent_coef=0.0010 | ent=0.827
+Ep 4180 | retour=   137.3 | moy(100)=  113.5 | ent_coef=0.0010 | ent=0.726
+Ep 4190 | retour=     8.8 | moy(100)=  115.2 | ent_coef=0.0010 | ent=0.946
+Ep 4200 | retour=   151.4 | moy(100)=  116.0 | ent_coef=0.0010 | ent=1.077
+[EVAL] Ep 4200 | retour moyen (10 ep) = 202.7
+Ep 4210 | retour=   141.5 | moy(100)=  121.5 | ent_coef=0.0010 | ent=0.926
+Ep 4220 | retour=   210.4 | moy(100)=  123.2 | ent_coef=0.0010 | ent=0.746
+Ep 4230 | retour=   162.4 | moy(100)=  130.4 | ent_coef=0.0010 | ent=1.068
+Ep 4240 | retour=   141.9 | moy(100)=  135.1 | ent_coef=0.0010 | ent=1.034
+Ep 4250 | retour=   126.2 | moy(100)=  137.1 | ent_coef=0.0010 | ent=0.941
+[EVAL] Ep 4250 | retour moyen (10 ep) = 271.1
+[SAVE] Meilleur modèle sauvegardé : checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+Ep 4260 | retour=   137.3 | moy(100)=  137.3 | ent_coef=0.0010 | ent=1.055
+Ep 4270 | retour=   159.0 | moy(100)=  140.6 | ent_coef=0.0010 | ent=1.044
+Ep 4280 | retour=   134.0 | moy(100)=  138.3 | ent_coef=0.0010 | ent=1.062
+Ep 4290 | retour=   147.8 | moy(100)=  143.3 | ent_coef=0.0010 | ent=1.084
+Ep 4300 | retour=   177.0 | moy(100)=  146.3 | ent_coef=0.0010 | ent=1.037
+[EVAL] Ep 4300 | retour moyen (10 ep) = 194.8
+Ep 4310 | retour=   152.4 | moy(100)=  149.4 | ent_coef=0.0010 | ent=0.981
+Ep 4320 | retour=   140.9 | moy(100)=  149.5 | ent_coef=0.0010 | ent=0.869
+Ep 4330 | retour=   136.7 | moy(100)=  149.1 | ent_coef=0.0010 | ent=0.998
+Ep 4340 | retour=   164.6 | moy(100)=  150.9 | ent_coef=0.0010 | ent=1.067
+Ep 4350 | retour=   154.2 | moy(100)=  149.5 | ent_coef=0.0010 | ent=1.018
+[EVAL] Ep 4350 | retour moyen (10 ep) = 194.5
+Ep 4360 | retour=   178.8 | moy(100)=  147.4 | ent_coef=0.0010 | ent=1.057
+Ep 4370 | retour=   150.0 | moy(100)=  144.0 | ent_coef=0.0010 | ent=1.047
+Ep 4380 | retour=   176.9 | moy(100)=  138.1 | ent_coef=0.0010 | ent=0.868
+Ep 4390 | retour=    -5.2 | moy(100)=  137.0 | ent_coef=0.0010 | ent=0.796
+Ep 4400 | retour=   240.5 | moy(100)=  137.2 | ent_coef=0.0010 | ent=0.646
+[EVAL] Ep 4400 | retour moyen (10 ep) = 152.0
+Ep 4410 | retour=   -22.3 | moy(100)=  133.4 | ent_coef=0.0010 | ent=0.755
+Ep 4420 | retour=   145.6 | moy(100)=  129.0 | ent_coef=0.0010 | ent=1.025
+Ep 4430 | retour=    13.1 | moy(100)=  125.5 | ent_coef=0.0010 | ent=0.860
+Ep 4440 | retour=   167.7 | moy(100)=  120.8 | ent_coef=0.0010 | ent=1.021
+Ep 4450 | retour=   116.4 | moy(100)=  124.2 | ent_coef=0.0010 | ent=1.005
+[EVAL] Ep 4450 | retour moyen (10 ep) = 138.6
+Ep 4460 | retour=   -24.3 | moy(100)=  123.0 | ent_coef=0.0010 | ent=0.929
+Ep 4470 | retour=   147.3 | moy(100)=  125.8 | ent_coef=0.0010 | ent=1.025
+Ep 4480 | retour=   137.9 | moy(100)=  133.6 | ent_coef=0.0010 | ent=0.986
+Ep 4490 | retour=   144.6 | moy(100)=  135.1 | ent_coef=0.0010 | ent=1.035
+Ep 4500 | retour=   139.1 | moy(100)=  134.6 | ent_coef=0.0010 | ent=0.979
+[EVAL] Ep 4500 | retour moyen (10 ep) = 216.9
+Ep 4510 | retour=   225.7 | moy(100)=  139.1 | ent_coef=0.0010 | ent=0.720
+Ep 4520 | retour=   150.9 | moy(100)=  143.8 | ent_coef=0.0010 | ent=0.988
+Ep 4530 | retour=   144.9 | moy(100)=  147.5 | ent_coef=0.0010 | ent=0.942
+Ep 4540 | retour=   185.6 | moy(100)=  151.8 | ent_coef=0.0010 | ent=0.887
+Ep 4550 | retour=   184.3 | moy(100)=  151.5 | ent_coef=0.0010 | ent=0.902
+[EVAL] Ep 4550 | retour moyen (10 ep) = 252.4
+Ep 4560 | retour=   150.1 | moy(100)=  155.8 | ent_coef=0.0010 | ent=0.824
+Ep 4570 | retour=   157.1 | moy(100)=  154.2 | ent_coef=0.0010 | ent=0.809
+Ep 4580 | retour=   126.8 | moy(100)=  155.0 | ent_coef=0.0010 | ent=0.745
+Ep 4590 | retour=   156.3 | moy(100)=  157.5 | ent_coef=0.0010 | ent=0.680
+Ep 4600 | retour=   151.6 | moy(100)=  155.6 | ent_coef=0.0010 | ent=0.655
+[EVAL] Ep 4600 | retour moyen (10 ep) = 197.6
+Ep 4610 | retour=   103.8 | moy(100)=  158.2 | ent_coef=0.0010 | ent=0.841
+Ep 4620 | retour=     9.9 | moy(100)=  160.8 | ent_coef=0.0010 | ent=0.624
+Ep 4630 | retour=    -7.4 | moy(100)=  160.7 | ent_coef=0.0010 | ent=0.785
+Ep 4640 | retour=   311.0 | moy(100)=  163.7 | ent_coef=0.0010 | ent=0.719
+Ep 4650 | retour=   257.6 | moy(100)=  165.0 | ent_coef=0.0010 | ent=0.601
+[EVAL] Ep 4650 | retour moyen (10 ep) = 217.9
+Ep 4660 | retour=   245.9 | moy(100)=  169.4 | ent_coef=0.0010 | ent=0.765
+Ep 4670 | retour=   271.8 | moy(100)=  171.6 | ent_coef=0.0010 | ent=0.605
+Ep 4680 | retour=   266.8 | moy(100)=  179.5 | ent_coef=0.0010 | ent=0.586
+Ep 4690 | retour=   267.5 | moy(100)=  189.0 | ent_coef=0.0010 | ent=0.569
+Ep 4700 | retour=   258.2 | moy(100)=  194.4 | ent_coef=0.0010 | ent=0.759
+[EVAL] Ep 4700 | retour moyen (10 ep) = 239.3
+Ep 4710 | retour=   264.6 | moy(100)=  200.7 | ent_coef=0.0010 | ent=0.622
+[DONE] Résolu ! moy_glissante=200.7 >= 200.0
+
+================================================================================
+RÉSUMÉ DE L'ENTRAÎNEMENT
+================================================================================
+Durée :               1074.9s (17.9 min)
+Épisodes :            4710
+Meilleur eval :       271.1
+Moyenne finale :      200.7 +/- 105.8
+Résolu :              OUI
+Checkpoint :          checkpoints/reinforce_maxEpisodes_10000_hiddenSize_256.pt
+================================================================================
+
+
+Graphique sauvegardé : reinforce_maxEpisodes_10000__hiddenSize_256.png
