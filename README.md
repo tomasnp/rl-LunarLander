@@ -1,4 +1,6 @@
-# rl-LunarLander — Rendu final
+# rl-LunarLander — Rendu final 
+
+Auteurs: Amine ROUIBI - Thomas SINAPI
 
 Ce dépôt regroupe trois approches d'apprentissage par renforcement sur `LunarLander-v3`.
 
